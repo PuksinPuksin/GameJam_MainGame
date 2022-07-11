@@ -10,12 +10,11 @@ public class ObstacleSpawner : MonoBehaviour
     private int obstacleRangeMin = 3;
     private void Start()
     {
-        PoolManager.CreatePool<ObstacleMove>("Obstacle", transform.gameObject, 5);
-        PoolManager.CreatePool<ObstacleMove>("LeftObstacle", transform.gameObject, 5);
-        PoolManager.CreatePool<ObstacleMove>("RightObstacle", transform.gameObject, 5);
-        StartCoroutine(ObstacleSpawn());
         obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
-
+        PoolManager.CreatePool<ObstacleMove>("Obstacle", transform.gameObject, 3);
+        PoolManager.CreatePool<ObstacleMove>("LeftObstacle", transform.gameObject, 3);
+        PoolManager.CreatePool<ObstacleMove>("RightObstacle", transform.gameObject, 3);
+        StartCoroutine(ObstacleSpawn());
     }
     private IEnumerator ObstacleSpawn()
     {
