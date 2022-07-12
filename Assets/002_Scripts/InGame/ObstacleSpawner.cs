@@ -8,6 +8,17 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private int obstacleRange;
     private int obstacleRangeMax = 0;
     private int obstacleRangeMin = 3;
+    private void Update()
+    {
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    Time.timeScale = 0;
+        //}
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    Time.timeScale = 1;
+        //}
+    }
     private void Start()
     {
         obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
