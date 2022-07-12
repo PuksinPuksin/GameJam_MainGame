@@ -8,10 +8,12 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private int obstacleRange;
     private int obstacleRangeMax = 0;
     private int obstacleRangeMin = 3;
+    [SerializeField] private float waitSeconds = 0.8f;
+    [SerializeField] private PlayerManager playerManager;
 
     private void Start()
     {
-
+        playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
         PoolManager.CreatePool<ObstacleMove>("Obstacle", transform.gameObject, 3);
         PoolManager.CreatePool<ObstacleMove>("LeftObstacle", transform.gameObject, 3);
@@ -23,7 +25,6 @@ public class ObstacleSpawner : MonoBehaviour
     {
         while (true)
         {
-            float waitSeconds = Random.Range(0.3f, 2f);
             obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
             ObstacleCheck();
             yield return new WaitForSeconds(waitSeconds);

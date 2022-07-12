@@ -15,5 +15,7 @@ public class Player1 : MonoBehaviour
     {
         Debug.Log($"{pm.Hp}");
         pm.Hp = pm.Hp - 1/pm.maxHp;
+        other.gameObject.SetActive(false);
+
     }
 }
