@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ObstacleMove : MonoBehaviour
 {
-    [SerializeField] private float speed = 7f;
+    public static float speed;
     private void FixedUpdate()
     {
+        
         transform.Translate(Vector3.down * speed * Time.deltaTime);
 
     }
