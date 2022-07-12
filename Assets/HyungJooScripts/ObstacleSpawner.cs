@@ -8,10 +8,14 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private int obstacleRange;
     private int obstacleRangeMax = 0;
     private int obstacleRangeMin = 3;
+    [SerializeField] private PlayerManager playerManager;
+    public float newWaitForSeconds;
 
     private void Start()
     {
-
+        newWaitForSeconds = 5f;
+        ObstacleMove.speed = 5f;
+        playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
         PoolManager.CreatePool<ObstacleMove>("Obstacle", transform.gameObject, 3);
         PoolManager.CreatePool<ObstacleMove>("LeftObstacle", transform.gameObject, 3);
@@ -19,14 +23,20 @@ public class ObstacleSpawner : MonoBehaviour
         StartCoroutine(ObstacleSpawn());
 
     }
+    private void Update()
+    {
+        newWaitForSeconds -= Time.deltaTime / 20;
+        ObstacleMove.speed += Time.deltaTime / 15 ;
+        Debug.Log(newWaitForSeconds);
+    }
     private IEnumerator ObstacleSpawn()
     {
+
         while (true)
         {
-            float waitSeconds = Random.Range(0.3f, 2f);
             obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
             ObstacleCheck();
-            yield return new WaitForSeconds(waitSeconds);
+            yield return new WaitForSeconds(newWaitForSeconds);
 
         }
     }
@@ -37,20 +47,20 @@ public class ObstacleSpawner : MonoBehaviour
             case 1:
                 ObstacleMove leftObj = PoolManager.GetItem<ObstacleMove>("LeftObstacle");
                 leftObj.transform.SetParent(null);
-                leftObj.transform.position = new Vector3(-1, _stageData.LimitMax.y, 0);
+                leftObj.transform.position = new Vector3(-1.25f, _stageData.LimitMax.y, 0);
                 break;
             case 2:
                 ObstacleMove firstObj = PoolManager.GetItem<ObstacleMove>("Obstacle");
                 ObstacleMove secondObj = PoolManager.GetItem<ObstacleMove>("Obstacle");
                 firstObj.transform.SetParent(null);
                 secondObj.transform.SetParent(null);
-                firstObj.transform.position = new Vector3(-1, _stageData.LimitMax.y, 0);
-                secondObj.transform.position = new Vector3(1, _stageData.LimitMax.y, 0);
+                firstObj.transform.position = new Vector3(-1.25f, _stageData.LimitMax.y, 0);
+                secondObj.transform.position = new Vector3(1.25f, _stageData.LimitMax.y, 0);
                 break;
             case 3:
                 ObstacleMove rightObj = PoolManager.GetItem<ObstacleMove>("RightObstacle");
                 rightObj.transform.SetParent(null);
-                rightObj.transform.position = new Vector3(1, _stageData.LimitMax.y, 0);
+                rightObj.transform.position = new Vector3(1.25f, _stageData.LimitMax.y, 0);
                 break;
 
         }

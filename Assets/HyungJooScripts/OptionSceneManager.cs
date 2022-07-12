@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class OptionSceneManager : MonoBehaviour
+public class OptionSceneManager : SceneManagerParent
 {
     public bool optionPanelOn;
     public bool soundPanelOn;
