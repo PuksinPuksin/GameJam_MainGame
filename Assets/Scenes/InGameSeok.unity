@@ -1094,7 +1094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 2069442153}
   player2: {fileID: 1253969905}
-  maxHp: 20
+  maxHp: 10
 --- !u!1 &1649010662
 GameObject:
   m_ObjectHideFlags: 0
