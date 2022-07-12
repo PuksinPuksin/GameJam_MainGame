@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneLoad : MonoBehaviour
+public class SceneLoad : SceneManagerParent
 {
 
     public void OnStart()
@@ -23,6 +23,7 @@ public class SceneLoad : MonoBehaviour
     public void OnQuit()
     {
         Application.Quit();
+        Debug.Log("111");
     }
 
 }
