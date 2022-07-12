@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     private Color green = new Color(0, 1, 0);
 
     public float Hp { get => hp; set {hp = value; if(hp <= 0) Debug.Log("Die");}}
-    public int maxHp = 20;
+    public float maxHp = 20;
     private float hp;
 
     private void Awake()
