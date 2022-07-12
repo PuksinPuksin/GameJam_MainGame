@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
     public float maxHp = 20;
     private float hp;
 
+    private bool bothSpawn = false;
+
     private void Awake()
     {
         // if(player1 = null) player1 = GameObject.Find("Player1");
@@ -34,7 +36,8 @@ public class PlayerManager : MonoBehaviour
     {
         Merge1();
         Merge2();
-        BothMerge();   
+        BothMerge();
+        CheckRay();
     }
 
     private void Merge1()
@@ -67,10 +70,14 @@ public class PlayerManager : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.L))
         {
-            p1Renderer.color = green;
-            p2Renderer.color = green;
-            player1.GetComponent<Collider2D>().enabled = false;
-            player2.GetComponent<Collider2D>().enabled = false;
+            if(bothSpawn)
+            {
+                Debug.Log("sad");
+                p1Renderer.color = green;
+                p2Renderer.color = green;
+                player1.GetComponent<Collider2D>().enabled = false;
+                player2.GetComponent<Collider2D>().enabled = false;
+            }
         }
         if(!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.L))
         {
@@ -78,6 +85,23 @@ public class PlayerManager : MonoBehaviour
             p2Renderer.color = blue;
             player1.GetComponent<Collider2D>().enabled = true;
             player2.GetComponent<Collider2D>().enabled = true;
+        }
+    }
+    private void CheckRay()
+    {
+        RaycastHit2D on1hit = Physics2D.Raycast(player1.transform.position, Vector2.up, 2f);
+        RaycastHit2D on2hit = Physics2D.Raycast(player2.transform.position, Vector2.up, 2f);
+        if(on1hit && on2hit)
+        {
+            bothSpawn = true;
+        }
+        if(!on1hit)
+        {
+            bothSpawn = false;
+        }
+        if(!on2hit)
+        {
+            bothSpawn = false;
         }
     }
 }
