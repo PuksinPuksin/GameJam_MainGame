@@ -17,8 +17,7 @@ public class PlayerManager : MonoBehaviour
     public float maxHp = 20;
     private float hp;
 
-    private bool bothClick = false;
-    public bool bothSpawn = false;
+    private bool bothSpawn = false;
 
     private void Awake()
     {
@@ -35,59 +34,74 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKey(KeyCode.L) && Input.GetKey(KeyCode.S))
-        {
-            bothClick = true;
-
-        }
-        if (!Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.S))
-        {
-            bothClick = false;
-            p1Renderer.color = yellow;
-            p2Renderer.color= blue;
-            player1.GetComponent<Collider2D>().enabled = true;
-            player2.GetComponent<Collider2D>().enabled = true;
-        }
-        if (
-            Physics2D.Raycast(player1.transform.position, Vector2.up, 1.5f).collider.isTrigger &&
-            Physics2D.Raycast(player2.transform.position, Vector2.up, 1.5f).collider.isTrigger
-        )
-        {
-            bothSpawn = true;
-        }
-        else
-        {
-            bothSpawn = false;
-        }
-        Summing1();
-        Summing2();
-        FullSumming();
+        Merge1();
+        Merge2();
+        BothMerge();
+        CheckRay();
     }
 
-    private void Summing1()
+    private void Merge1()
     {
-        if(Input.GetKey(KeyCode.L) && !bothClick)
+        if(Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.S))
         {
             p1Renderer.color = p2Renderer.color;
             player1.GetComponent<Collider2D>().enabled = false;
         }
-    }
-    private void Summing2()
-    {
-        if(Input.GetKey(KeyCode.S) && !bothClick)
+        if(!Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.S))
         {
-            p2Renderer.color = p1Renderer.color;
-            player2.GetComponent<Collider2D>().enabled = false;
+            p1Renderer.color = yellow;
+            player1.GetComponent<Collider2D>().enabled = true;
         }
     }
-    private void FullSumming()
+    private void Merge2()
     {
-        if (bothClick && bothSpawn)
+        if(Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.L))
         {
-            p1Renderer.color = new Color(0, 1, 0);
+            p2Renderer.color = p1Renderer.color;
             player1.GetComponent<Collider2D>().enabled = false;
-            p2Renderer.color = new Color(0, 1, 0);
-            player2.GetComponent<Collider2D>().enabled = false;
+        }
+        if(!Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.L))
+        {
+            p2Renderer.color = blue;
+            player2.GetComponent<Collider2D>().enabled = true;
+        }
+    }
+    private void BothMerge()
+    {
+        if(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.L))
+        {
+            if(bothSpawn)
+            {
+                Debug.Log("sad");
+                p1Renderer.color = green;
+                p2Renderer.color = green;
+                player1.GetComponent<Collider2D>().enabled = false;
+                player2.GetComponent<Collider2D>().enabled = false;
+            }
+        }
+        if(!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.L))
+        {
+            p1Renderer.color = yellow;
+            p2Renderer.color = blue;
+            player1.GetComponent<Collider2D>().enabled = true;
+            player2.GetComponent<Collider2D>().enabled = true;
+        }
+    }
+    private void CheckRay()
+    {
+        RaycastHit2D on1hit = Physics2D.Raycast(player1.transform.position, Vector2.up, 2f);
+        RaycastHit2D on2hit = Physics2D.Raycast(player2.transform.position, Vector2.up, 2f);
+        if(on1hit && on2hit)
+        {
+            bothSpawn = true;
+        }
+        if(!on1hit)
+        {
+            bothSpawn = false;
+        }
+        if(!on2hit)
+        {
+            bothSpawn = false;
         }
     }
 }
