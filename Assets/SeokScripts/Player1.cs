@@ -13,7 +13,7 @@ public class Player1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("asdf");
-        pm.Hp -= (1 / 20);
+        Debug.Log($"{pm.Hp}");
+        pm.Hp = pm.Hp - 1/pm.maxHp;
     }
 }
