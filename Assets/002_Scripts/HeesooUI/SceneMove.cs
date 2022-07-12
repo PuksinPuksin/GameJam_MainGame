@@ -1,31 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utill;
 
 public class SceneMove : MonoBehaviour
 {
     // public PlayerHp playerHp;
-
     public void OnStart()
     {
-        LoadScene.Instance.GameStart(); // °ÔÀÓ ½ºÅ¸Æ® ¹öÆ° ÇÔ¼ö
+        LoadScene.Instance.GameStart(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸Æ® ï¿½ï¿½Æ° ï¿½Ô¼ï¿½
     }
 
     public void OnMain()
     {
-        LoadScene.Instance.MainMenu(); // ¸ÞÀÎ ¸Þ´º ¹öÆ° ÇÔ¼ö
+        LoadScene.Instance.MainMenu(); // ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½Æ° ï¿½Ô¼ï¿½
     }
-
     public void OnQuit()
     {
-        Application.Quit(); // ¾îÇÃ¸®ÄÉÀÌ¼Ç Á¾·á
+        Application.Quit(); // ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
         Debug.Log("11");
     }
 
-    private void Start()
-    {
-
-    }
 
     private void Update()
     {
