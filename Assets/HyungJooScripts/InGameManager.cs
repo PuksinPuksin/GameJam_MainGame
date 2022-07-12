@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class InGameManager : MonoBehaviour
 {
@@ -9,5 +10,10 @@ public class InGameManager : MonoBehaviour
     private void Update()
     {
         hpSlider.value = playerManager.Hp;
+    }
+    private void Start()
+    {
+        SceneManager.LoadScene("OptionScene", LoadSceneMode.Additive);
+        
     }
 }

@@ -1440,7 +1440,6 @@ MonoBehaviour:
   player1: {fileID: 2069442153}
   player2: {fileID: 1253969905}
   maxHp: 10
-  bothSpawn: 0
 --- !u!50 &1389778039
 Rigidbody2D:
   serializedVersion: 4
