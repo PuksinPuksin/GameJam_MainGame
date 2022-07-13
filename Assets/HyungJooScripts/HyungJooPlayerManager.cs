@@ -15,6 +15,8 @@ public class HyungJooPlayerManager : MonoBehaviour
     private SpriteRenderer p1Renderer = null;
     [SerializeField] private bool bothSpawn = false;
     private SpriteRenderer p2Renderer = null;
+    private Player1 p1 = null;
+    private Player2 p2 = null;
 
     //private Color yellow = new Color(1, 1, 0);
     //private Color blue = new Color(0, 1, 1);
@@ -37,8 +39,11 @@ public class HyungJooPlayerManager : MonoBehaviour
     
     private GameoverPopUp popUp = null;
 
-    private GameoverPopUp popUp = null;
-
+    private void Awake()
+    {
+        p1 = player1.GetComponent<Player1>();
+        p2 = player2.GetComponent<Player2>();
+    }
     private void Start()
 
     {
@@ -47,8 +52,6 @@ public class HyungJooPlayerManager : MonoBehaviour
         Time.timeScale = 1;
         p1Renderer = player1.GetComponent<SpriteRenderer>();
         p2Renderer = player2.GetComponent<SpriteRenderer>();
-        p1Renderer.sprite = yellow;
-        p2Renderer.sprite = blue;
         leftSelected = false;
         rightSelected = false;
         bothSelected = false;
@@ -80,8 +83,8 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void BothSelected()
     {
-        if (rightSelected == true && leftSelected == true)
-        {
+        if (button2 == true && button1 == true)
+        {   
             bothSelected = true;
             Debug.Log("B");
         }
@@ -96,17 +99,15 @@ public class HyungJooPlayerManager : MonoBehaviour
 
         if (bothSelected == true)
         {
+            p1.SetGreen();
+            p2.SetGreen();
             if (bothSpawn)
             {
-                p1Renderer.sprite = green;
-                p2Renderer.sprite = green;
                 player1.GetComponent<Collider2D>().enabled = false;
                 player2.GetComponent<Collider2D>().enabled = false;
             }
             else
             {
-                p1Renderer.sprite = green;
-                p2Renderer.sprite = green;
                 player1.GetComponent<Collider2D>().enabled = true;
                 player2.GetComponent<Collider2D>().enabled = true;
             }
@@ -116,30 +117,32 @@ public class HyungJooPlayerManager : MonoBehaviour
         {
             if (leftSelected == true)
             {
-                p2Renderer.sprite = p1Renderer.sprite;
                 player2.GetComponent<Collider2D>().enabled = false;
+                p2.SetBlue();
             }
             else if (leftSelected == false)
             {
-                p2Renderer.sprite = yellow;
-
                 player2.GetComponent<Collider2D>().enabled = true;
+                p2.SetYellow();
             }
             if (rightSelected == true)
             {
-                p1Renderer.sprite = p2Renderer.sprite;
                 player1.GetComponent<Collider2D>().enabled = false;
+                p1.SetYellow();
             }
             else if (rightSelected == false)
             {
-                p1Renderer.sprite = blue;
-
                 player1.GetComponent<Collider2D>().enabled = true;
+                p1.SetBlue();
             }
         }
     }
     private void Update()
     {
+        // For Debug
+        this.button1 = Input.GetKey(KeyCode.L);
+        this.button2 = Input.GetKey(KeyCode.S);
+        
         LeftSelected();
         RightSelected();
         BothSelected();

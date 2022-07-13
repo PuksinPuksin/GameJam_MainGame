@@ -10,11 +10,11 @@ public class backMove : MonoBehaviour
 
     private void Update()
     {
-        if(back1.transform.position.y <= -9)
+        if(back1.transform.position.y <= -10)
         {
             back1.transform.position = new Vector3(0, 9, 0);
         }
-        if(back2.transform.position.y <= -9)
+        if(back2.transform.position.y <= -10)
         {
             back2.transform.position = new Vector3(0, 9, 0);
         }
