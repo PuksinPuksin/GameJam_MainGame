@@ -47,8 +47,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     private void Start()
 
     {
-
-        //popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
+        popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
 
         Time.timeScale = 1;
         p1Renderer = player1.GetComponent<SpriteRenderer>();
