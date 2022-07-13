@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CHECKPREFAB : MonoBehaviour
+public class CHECKPREFAB : MonoBehaviour//, IPoolable
 {
-    private void Start()
-    {
-        Invoke("Destroy", 0.4f);
-    }
+
     public void Destroy()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
+
+    //public void OnPool()
+    //{
+    //    particle.Play();
+    //    Invoke("Destroy", 0.4f);
+    //}
+    //private void Start()
+    //{
+    //    Invoke("Destroy", 0.4f);
+    //}
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HyungJooPlayerManager : MonoBehaviour
@@ -34,14 +35,17 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     public bool button1 = false;
     public bool button2 = false;
-    
+
     private GameoverPopUp popUp = null;
     public GameObject diesound;
 
     private void Start()
     {
-        PoolManager.CreatePool<CHECKSOUND>("Merge", transform.gameObject, 2);
-        PoolManager.CreatePool<CHECKSOUND>("SuperMerge", transform.gameObject, 2);
+        //PoolManager.CreatePool<CHECKPREFAB>("BlueMergeEffect", transform.gameObject, 3);
+        //PoolManager.CreatePool<CHECKPREFAB>("GreenMergeEffect", transform.gameObject, 10);
+        //PoolManager.CreatePool<CHECKPREFAB>("OrangeMergeEffect", transform.gameObject, 3);
+        PoolManager.CreatePool<CHECKSOUND>("Merge", transform.gameObject, 5);
+        PoolManager.CreatePool<CHECKSOUND>("SuperMerge", transform.gameObject, 5);
         popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
         hp = 1;
 
@@ -55,6 +59,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         leftSelected = false;
         rightSelected = false;
         bothSelected = false;
+        StartCoroutine(Effect());
 
     }
     public void LeftSelected()
@@ -103,6 +108,10 @@ public class HyungJooPlayerManager : MonoBehaviour
             {
                 p1Renderer.sprite = green;
                 p2Renderer.sprite = green;
+                //CHECKPREFAB obj = PoolManager.GetItem<CHECKPREFAB>("GreenMergeEffect");
+                //obj.transform.position = player1.transform.position;
+                //CHECKPREFAB obj2 = PoolManager.GetItem<CHECKPREFAB>("GreenMergeEffect");
+                //obj2.transform.position = player2.transform.position;
                 player1.GetComponent<Collider2D>().enabled = false;
                 player2.GetComponent<Collider2D>().enabled = false;
             }
@@ -110,6 +119,10 @@ public class HyungJooPlayerManager : MonoBehaviour
             {
                 p1Renderer.sprite = green;
                 p2Renderer.sprite = green;
+                //CHECKPREFAB obj = PoolManager.GetItem<CHECKPREFAB>("GreenMergeEffect");
+                //obj.transform.position = player1.transform.position;
+                //CHECKPREFAB obj2 = PoolManager.GetItem<CHECKPREFAB>("GreenMergeEffect");
+                //obj2.transform.position = player2.transform.position;
                 player1.GetComponent<Collider2D>().enabled = true;
                 player2.GetComponent<Collider2D>().enabled = true;
             }
@@ -120,6 +133,7 @@ public class HyungJooPlayerManager : MonoBehaviour
             if (leftSelected == true)
             {
                 p2Renderer.sprite = p1Renderer.sprite;
+
                 player2.GetComponent<Collider2D>().enabled = false;
             }
             else if (leftSelected == false)
@@ -131,6 +145,7 @@ public class HyungJooPlayerManager : MonoBehaviour
             if (rightSelected == true)
             {
                 p1Renderer.sprite = p2Renderer.sprite;
+
                 player1.GetComponent<Collider2D>().enabled = false;
             }
             else if (rightSelected == false)
@@ -141,6 +156,54 @@ public class HyungJooPlayerManager : MonoBehaviour
             }
         }
     }
+    private IEnumerator Effect()
+    {
+        while (true)
+        {
+            EffectSpawn();
+            yield return null;
+        }
+    }
+    public void EffectSpawn()
+    {
+        if(bothSelected == true)
+        {
+            //CHECKPREFAB obj3 = PoolManager.GetItem<CHECKPREFAB>("GreenMergeEffect");
+            //obj3.transform.position = player1.transform.position;
+            //CHECKPREFAB obj4 = PoolManager.GetItem<CHECKPREFAB>("GreenMergeEffect");
+            //obj4.transform.position = player2.transform.position;
+            GameObject obj = Instantiate(greenMergeEffect);
+            obj.transform.position = player2.transform.position;
+            Destroy(obj, 0.5f);
+            GameObject obj2 = Instantiate(greenMergeEffect);
+            obj2.transform.position = player1.transform.position;
+            Destroy(obj2, 0.5f);
+
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                //CHECKPREFAB obj = PoolManager.GetItem<CHECKPREFAB>("BlueMergeEffect");
+                //obj.transform.position = player2.transform.position;
+                GameObject obj = Instantiate(blueMergeEffect);
+                Destroy(obj, 0.5f);
+                obj.transform.position = player2.transform.position;
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                //CHECKPREFAB obj2 = PoolManager.GetItem<CHECKPREFAB>("OrangeMergeEffect");
+                //obj2.transform.position = player1.transform.position;
+                GameObject obj2 = Instantiate(orangeMergeEffect);
+                Destroy(obj2, 0.5f);
+                obj2.transform.position = player1.transform.position;
+
+            }
+        }
+
+        
+
+    }
     private void Update()
     {
         LeftSelected();
@@ -150,6 +213,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         Sound();
         ColliderCheck();
         die();
+        //EffectSpawn();
 
     }
     private void CheckRay()
@@ -168,7 +232,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         }
         else
         {
-            bothSpawn=false;
+            bothSpawn = false;
         }
     }
     public void Sound()
@@ -193,10 +257,10 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     public void die()
     {
-        if(Hp <= 0)
+        if (Hp <= 0)
         {
             Instantiate(diesound);
-            
+
         }
     }
 }

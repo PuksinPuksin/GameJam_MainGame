@@ -58,6 +58,7 @@ public class ObstacleSpawner : MonoBehaviour
                 break;
             case 2:
                 ObstacleMove firstObj = PoolManager.GetItem<ObstacleMove>("Obstacle");
+                print(firstObj);
                 ObstacleMove secondObj = PoolManager.GetItem<ObstacleMove>("Obstacle");
                 firstObj.transform.SetParent(null);
                 secondObj.transform.SetParent(null);
@@ -66,7 +67,6 @@ public class ObstacleSpawner : MonoBehaviour
                 break;
             case 3:
                 ObstacleMove rightObj = PoolManager.GetItem<ObstacleMove>("RightObstacle");
-                rightObj.transform.SetParent(null);
                 rightObj.transform.position = new Vector3(1.25f, _stageData.LimitMax.y, 0);
                 break;
 
