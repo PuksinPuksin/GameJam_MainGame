@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     private Color blue = new Color(0, 1, 1);
     private Color green = new Color(0, 1, 0);
 
-    public float Hp { get => hp; set {hp = value; if (hp <= 0) {  } }}
+    public float Hp { get => hp; set {hp = value; if (hp <= 0) { popUp.GameoverPopUP(); popUp.Invoke("Asd", 0.8f); } }}
     public float maxHp = 20;
     private float hp;
 
