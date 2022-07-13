@@ -22,6 +22,10 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     public static bool obstacleCheck1;
     public static bool obstacleCheck2;
+
+    public bool button1 = false;
+    public bool button2 = false;
+
     private void Start()
     {
         p1Renderer = player1.GetComponent<SpriteRenderer>();
@@ -34,7 +38,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void LeftSelected()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (button2)
         {
             leftSelected = true;
             Debug.Log("S");
@@ -46,7 +50,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void RightSelected()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (button1)
         {
             rightSelected = true;
             Debug.Log("L");
@@ -58,7 +62,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void BothSelected()
     {
-        if (leftSelected == true && rightSelected == true)
+        if (button2 == true && button1 == true)
         {
             bothSelected = true;
             Debug.Log("B");
