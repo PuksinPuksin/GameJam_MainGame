@@ -3640,8 +3640,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1446613481}
   player2: {fileID: 1116614203}
+  blueMergeEffect: {fileID: 0}
+  greenMergeEffect: {fileID: 0}
+  orangeMergeEffect: {fileID: 0}
+  FXSound_1: {fileID: 8789601357800263745, guid: ef3e940e60aad9f47b4622b986675c0d, type: 3}
+  FXSound_2: {fileID: 8175146209059961432, guid: 93711d90294140448a65a38e1efd9392, type: 3}
   bothSpawn: 0
   maxHp: 20
+  temp: 0
 --- !u!50 &1854984000
 Rigidbody2D:
   serializedVersion: 4

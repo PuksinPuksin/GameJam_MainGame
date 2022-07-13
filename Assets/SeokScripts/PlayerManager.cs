@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     private Color blue = new Color(0, 1, 1);
     private Color green = new Color(0, 1, 0);
 
-    public float Hp { get => hp; set {hp = value; if (hp <= 0) {  } }}
+    public float Hp { get => hp; set {hp = value; if (hp <= 0) { popUp.GameoverPopUP(); popUp.Invoke("Asd", 0.8f); } }}
     public float maxHp = 20;
     private float hp;
 
@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
         // if(player1 = null) player1 = GameObject.Find("Player1");
         // if(player2 = null) player2 = GameObject.Find("Player2");   
         hp = 1;
+        //popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
         // popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
     }
     private void Start()

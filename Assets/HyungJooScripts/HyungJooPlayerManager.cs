@@ -4,22 +4,31 @@ public class HyungJooPlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject player1 = null;
     [SerializeField] private GameObject player2 = null;
+    public Sprite blue = null;
+    public Sprite yellow = null;
+    public Sprite green = null;
+    [SerializeField] private GameObject blueMergeEffect;
+    [SerializeField] private GameObject greenMergeEffect;
+    [SerializeField] private GameObject orangeMergeEffect;
+    [SerializeField] GameObject FXSound_1; //����������
+    [SerializeField] GameObject FXSound_2; //����������
     private SpriteRenderer p1Renderer = null;
     [SerializeField] private bool bothSpawn = false;
     private SpriteRenderer p2Renderer = null;
     private Player1 p1 = null;
     private Player2 p2 = null;
 
-    private Color yellow = new Color(1, 1, 0);
-    private Color blue = new Color(0, 1, 1);
-    private Color green = new Color(0, 1, 0);
+    //private Color yellow = new Color(1, 1, 0);
+    //private Color blue = new Color(0, 1, 1);
+    //private Color green = new Color(0, 1, 0);
 
-    public float Hp { get => hp; set { hp = value; if (hp <= 0) Debug.Log("Die"); } }
+    public float Hp { get => hp; set { hp = value; if (hp <= 0) { popUp.GameoverPopUP(); popUp.Invoke("Asd", 0.8f); }; } }
     public float maxHp = 20;
     private float hp;
 
     public static bool leftSelected;
     public static bool rightSelected;
+    public static bool soundBool;
     public static bool bothSelected;
 
     public static bool obstacleCheck1;
@@ -27,6 +36,8 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     public bool button1 = false;
     public bool button2 = false;
+    
+    private GameoverPopUp popUp = null;
 
     private void Awake()
     {
@@ -34,16 +45,22 @@ public class HyungJooPlayerManager : MonoBehaviour
         p2 = player2.GetComponent<Player2>();
     }
     private void Start()
+
     {
+
+        //popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
+
+        Time.timeScale = 1;
         p1Renderer = player1.GetComponent<SpriteRenderer>();
         p2Renderer = player2.GetComponent<SpriteRenderer>();
         leftSelected = false;
         rightSelected = false;
         bothSelected = false;
+
     }
     public void LeftSelected()
     {
-        if (button2)
+        if (Input.GetKey(KeyCode.S))
         {
             leftSelected = true;
             Debug.Log("S");
@@ -55,7 +72,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void RightSelected()
     {
-        if (button1)
+        if (Input.GetKey(KeyCode.L))
         {
             rightSelected = true;
             Debug.Log("L");
@@ -75,6 +92,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         else
         {
             bothSelected = false;
+            soundBool = false;
         }
     }
     public void ColliderCheck()
@@ -131,14 +149,16 @@ public class HyungJooPlayerManager : MonoBehaviour
         BothSelected();
         CheckRay();
         //ObstacleCheck();
+        Sound();
         ColliderCheck();
+
     }
     private void CheckRay()
     {
-        RaycastHit2D on1hit = Physics2D.Raycast(player1.transform.position, Vector2.up, 1f);
-        RaycastHit2D on1hitBack = Physics2D.Raycast(player1.transform.position, Vector2.down, 1f);
-        RaycastHit2D on2hit = Physics2D.Raycast(player2.transform.position, Vector2.up, 1f);
-        RaycastHit2D on2hitBack = Physics2D.Raycast(player2.transform.position, Vector2.down, 1f);
+        RaycastHit2D on1hit = Physics2D.Raycast(player1.transform.position, Vector2.up, 2f);
+        RaycastHit2D on1hitBack = Physics2D.Raycast(player1.transform.position, Vector2.down, 2f);
+        RaycastHit2D on2hit = Physics2D.Raycast(player2.transform.position, Vector2.up, 2f);
+        RaycastHit2D on2hitBack = Physics2D.Raycast(player2.transform.position, Vector2.down, 2f);
         if (on1hit && on2hit)
         {
             bothSpawn = true;
@@ -152,6 +172,26 @@ public class HyungJooPlayerManager : MonoBehaviour
             bothSpawn=false;
         }
     }
+    public void Sound()
+    {
+
+        if (bothSelected == true) //���ջ���
+        {
+            if (soundBool == false)
+            {
+                soundBool = true;
+                Instantiate(FXSound_2);
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.L)) //���ջ���
+            {
+                Instantiate(FXSound_1);
+            }
+        }
+    }
+}
     //public void ObstacleCheck()
     //{
     //    if (obstacleCheck1 == true && obstacleCheck2 == true)
@@ -163,4 +203,4 @@ public class HyungJooPlayerManager : MonoBehaviour
     //        bothSpawn = false;
     //    }
     //}
-}
+

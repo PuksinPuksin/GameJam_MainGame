@@ -9,7 +9,7 @@ public class GameoverPopUp : MonoBehaviour
 
     public void GameoverPopUP()
     {
-        transform.DOMoveY(360, 0.7f);
+        transform.DOMoveY(360, 0.75f);
     }
 
     public void Asd()
