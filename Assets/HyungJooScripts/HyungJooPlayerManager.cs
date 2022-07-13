@@ -12,7 +12,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     private Color blue = new Color(0, 1, 1);
     private Color green = new Color(0, 1, 0);
 
-    public float Hp { get => hp; set { hp = value; if (hp <= 0) Debug.Log("Die"); } }
+    public float Hp { get => hp; set { hp = value; if (hp <= 0) Debug.Log("111"); } }
     public float maxHp = 20;
     private float hp;
 
@@ -26,8 +26,13 @@ public class HyungJooPlayerManager : MonoBehaviour
     public bool button1 = false;
     public bool button2 = false;
 
+    private GameoverPopUp popUp = null;
+
     private void Start()
     {
+        popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
+
+        Time.timeScale = 1;
         p1Renderer = player1.GetComponent<SpriteRenderer>();
         p2Renderer = player2.GetComponent<SpriteRenderer>();
         p1Renderer.color = yellow;
