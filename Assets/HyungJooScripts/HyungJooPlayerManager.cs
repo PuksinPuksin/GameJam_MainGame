@@ -93,22 +93,22 @@ public class HyungJooPlayerManager : MonoBehaviour
         {
             if (leftSelected == true)
             {
-                p1Renderer.color = p2Renderer.color;
+                p2Renderer.color = p1Renderer.color;
                 player2.GetComponent<Collider2D>().enabled = false;
             }
             else if (leftSelected == false)
             {
-                p1Renderer.color = yellow;
+                p2Renderer.color = yellow;
                 player2.GetComponent<Collider2D>().enabled = true;
             }
             if (rightSelected == true)
             {
-                p2Renderer.color = p1Renderer.color;
+                p1Renderer.color = p2Renderer.color;
                 player1.GetComponent<Collider2D>().enabled = false;
             }
             else if (rightSelected == false)
             {
-                p2Renderer.color = blue;
+                p1Renderer.color = blue;
                 player1.GetComponent<Collider2D>().enabled = true;
             }
         }
