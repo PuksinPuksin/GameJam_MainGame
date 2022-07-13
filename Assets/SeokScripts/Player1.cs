@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player1 : MonoBehaviour
 {
+    public HyungJooPlayerManager hyungJooPlayerManager;
     private PlayerManager pm = null;
 
     private void Awake()
@@ -20,4 +21,5 @@ public class Player1 : MonoBehaviour
         
 
     }
+ 
 }

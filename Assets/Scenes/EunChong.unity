@@ -2862,6 +2862,7 @@ GameObject:
   - component: {fileID: 1116614206}
   - component: {fileID: 1116614205}
   - component: {fileID: 1116614204}
+  - component: {fileID: 1116614209}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -2886,7 +2887,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.2933333, y: 1.1811523}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2928,6 +2929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c64dfa8d4f49141930f602af487c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!212 &1116614207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2969,7 +2971,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 264136182, guid: c3afe6c6f820d6549881e4ed844ccb46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2995,6 +2997,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1116614209
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116614203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5beb6cfaa35fcc4fb5fa2275c8f88bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1446613481
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,6 +3030,7 @@ GameObject:
   - component: {fileID: 1446613484}
   - component: {fileID: 1446613483}
   - component: {fileID: 1446613482}
+  - component: {fileID: 1446613487}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -3032,7 +3055,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.2, y: 1.1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3074,6 +3097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1faf3cae67388f34bab043583dd5ead1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hyungJooPlayerManager: {fileID: 0}
 --- !u!212 &1446613485
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3115,7 +3139,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6ae38d3b37d8c7449f201a566c41099, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3141,6 +3165,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1446613487
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446613481}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 207107054506f344e9bde8e7fab65bab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1488162396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,6 +3670,8 @@ MonoBehaviour:
   player1: {fileID: 1446613481}
   player2: {fileID: 1116614203}
   maxHp: 10
+  button1: 0
+  button2: 0
 --- !u!114 &1854983999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3640,6 +3686,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1446613481}
   player2: {fileID: 1116614203}
+  blue: {fileID: 21300000, guid: b6ae38d3b37d8c7449f201a566c41099, type: 3}
+  yellow: {fileID: 264136182, guid: c3afe6c6f820d6549881e4ed844ccb46, type: 3}
+  green: {fileID: 21300000, guid: ddd1eaa56b5b0ac4aa8a1a6516733258, type: 3}
   blueMergeEffect: {fileID: 0}
   greenMergeEffect: {fileID: 0}
   orangeMergeEffect: {fileID: 0}
@@ -3647,7 +3696,8 @@ MonoBehaviour:
   FXSound_2: {fileID: 8175146209059961432, guid: 93711d90294140448a65a38e1efd9392, type: 3}
   bothSpawn: 0
   maxHp: 20
-  temp: 0
+  button1: 0
+  button2: 0
 --- !u!50 &1854984000
 Rigidbody2D:
   serializedVersion: 4
