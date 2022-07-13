@@ -21,6 +21,26 @@ public class Player1 : MonoBehaviour
         other.gameObject.SetActive(false);
         
 
+    public void SetBlue()
+    {
+        animator.SetBool("SetBlue", true);
+        animator.SetBool("SetGreen", false);
+        animator.SetBool("SetYellow", false);
+        transform.localScale = new Vector3(1, 1, 1);
+    }
+    public void SetYellow()
+    {
+        animator.SetBool("SetBlue", false);
+        animator.SetBool("SetGreen", false);
+        animator.SetBool("SetYellow", true);
+        transform.localScale = new Vector3(1, 1, 1);
+    }
+    public void SetGreen()
+    {
+        animator.SetBool("SetBlue", false);
+        animator.SetBool("SetGreen", true);
+        animator.SetBool("SetYellow", false);
+        transform.localScale = new Vector3(1, 1, 1);
     }
  
 }

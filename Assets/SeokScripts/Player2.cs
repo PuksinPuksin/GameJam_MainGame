@@ -5,8 +5,12 @@ using UnityEngine;
 public class Player2 : MonoBehaviour
 {
     private HyungJooPlayerManager pm = null;
-    public Animator animator;
     public GameObject hit;
+    private Animator animator = null;
+    private BoxCollider2D collider = null;
+    private Vector2 offs;
+    private Vector2 siz;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -19,34 +23,34 @@ public class Player2 : MonoBehaviour
         Debug.Log($"{pm.Hp}");
         pm.Hp = pm.Hp - 1/pm.maxHp;
         other.gameObject.SetActive(false);
-
+        offs = collider.offset;
+        siz = collider.size;
     }
-    private void Update()
+    public void SetBlue()
     {
-        ChangeAnimation();
+        animator.SetBool("SetBlue", true);
+        animator.SetBool("SetGreen", false);
+        animator.SetBool("SetYellow", false);
+        transform.localScale = new Vector3(1, 1, 1);
+        collider.size = siz;
+        collider.offset = offs;
     }
-    public void ChangeAnimation()
+    public void SetYellow()
     {
-        if (HyungJooPlayerManager.bothSelected == true)
-        {
-            animator.SetBool("greenOn", true);
-            animator.SetBool("yellowOn", false);
-            animator.SetBool("blueOn", false);
-        }
-        else
-        {
-            if (HyungJooPlayerManager.leftSelected == true)
-            {
-                animator.SetBool("yellowOn", true);
-                animator.SetBool("greenOn", false);
-                animator.SetBool("blueOn", false);
-            }
-            if (HyungJooPlayerManager.rightSelected == true)
-            {
-                animator.SetBool("blueOn", true);
-                animator.SetBool("yellowOn", false);
-                animator.SetBool("greenOn", false);
-            }
-        }
+        animator.SetBool("SetBlue", false);
+        animator.SetBool("SetGreen", false);
+        animator.SetBool("SetYellow", true);
+        transform.localScale = new Vector3(1, 1, 1);
+        collider.size = siz;
+        collider.offset = offs;
+    }
+    public void SetGreen()
+    {
+        animator.SetBool("SetBlue", false);
+        animator.SetBool("SetGreen", true);
+        animator.SetBool("SetYellow", false);
+        transform.localScale = new Vector3(1, 1, 1);
+        collider.size = new Vector2(0.1f, 0.1f);
+        collider.offset = new Vector2(0, -0.01f);
     }
 }
