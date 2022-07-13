@@ -15,6 +15,9 @@ public class Player2 : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         pm = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();    
+        collider = GetComponent<BoxCollider2D>();
+        offs = collider.offset;
+        siz = collider.size;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,8 +26,6 @@ public class Player2 : MonoBehaviour
         Debug.Log($"{pm.Hp}");
         pm.Hp = pm.Hp - 1/pm.maxHp;
         other.gameObject.SetActive(false);
-        offs = collider.offset;
-        siz = collider.size;
     }
     public void SetBlue()
     {
