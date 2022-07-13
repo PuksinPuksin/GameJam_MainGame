@@ -4,20 +4,29 @@ public class HyungJooPlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject player1 = null;
     [SerializeField] private GameObject player2 = null;
+    public Sprite blue = null;
+    public Sprite yellow = null;
+    public Sprite green = null;
+    [SerializeField] private GameObject blueMergeEffect;
+    [SerializeField] private GameObject greenMergeEffect;
+    [SerializeField] private GameObject orangeMergeEffect;
+    [SerializeField] GameObject FXSound_1; //����������
+    [SerializeField] GameObject FXSound_2; //����������
     private SpriteRenderer p1Renderer = null;
     [SerializeField] private bool bothSpawn = false;
     private SpriteRenderer p2Renderer = null;
 
-    private Color yellow = new Color(1, 1, 0);
-    private Color blue = new Color(0, 1, 1);
-    private Color green = new Color(0, 1, 0);
+    //private Color yellow = new Color(1, 1, 0);
+    //private Color blue = new Color(0, 1, 1);
+    //private Color green = new Color(0, 1, 0);
 
-    public float Hp { get => hp; set { hp = value; if (hp <= 0) Debug.Log("111"); } }
+    public float Hp { get => hp; set { hp = value; if (hp <= 0) { popUp.GameoverPopUP(); popUp.Invoke("Asd", 0.8f); }; } }
     public float maxHp = 20;
     private float hp;
 
     public static bool leftSelected;
     public static bool rightSelected;
+    public static bool soundBool;
     public static bool bothSelected;
 
     public static bool obstacleCheck1;
@@ -25,25 +34,29 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     public bool button1 = false;
     public bool button2 = false;
+    
+    private GameoverPopUp popUp = null;
 
     private GameoverPopUp popUp = null;
 
     private void Start()
+
     {
         popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
 
         Time.timeScale = 1;
         p1Renderer = player1.GetComponent<SpriteRenderer>();
         p2Renderer = player2.GetComponent<SpriteRenderer>();
-        p1Renderer.color = yellow;
-        p2Renderer.color = blue;
+        p1Renderer.sprite = yellow;
+        p2Renderer.sprite = blue;
         leftSelected = false;
         rightSelected = false;
         bothSelected = false;
+
     }
     public void LeftSelected()
     {
-        if (button2)
+        if (Input.GetKey(KeyCode.S))
         {
             leftSelected = true;
             Debug.Log("S");
@@ -55,7 +68,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void RightSelected()
     {
-        if (button1)
+        if (Input.GetKey(KeyCode.L))
         {
             rightSelected = true;
             Debug.Log("L");
@@ -67,7 +80,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void BothSelected()
     {
-        if (button2 == true && button1 == true)
+        if (rightSelected == true && leftSelected == true)
         {
             bothSelected = true;
             Debug.Log("B");
@@ -75,6 +88,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         else
         {
             bothSelected = false;
+            soundBool = false;
         }
     }
     public void ColliderCheck()
@@ -84,15 +98,15 @@ public class HyungJooPlayerManager : MonoBehaviour
         {
             if (bothSpawn)
             {
-                p1Renderer.color = green;
-                p2Renderer.color = green;
+                p1Renderer.sprite = green;
+                p2Renderer.sprite = green;
                 player1.GetComponent<Collider2D>().enabled = false;
                 player2.GetComponent<Collider2D>().enabled = false;
             }
             else
             {
-                p1Renderer.color = green;
-                p2Renderer.color = green;
+                p1Renderer.sprite = green;
+                p2Renderer.sprite = green;
                 player1.GetComponent<Collider2D>().enabled = true;
                 player2.GetComponent<Collider2D>().enabled = true;
             }
@@ -102,22 +116,24 @@ public class HyungJooPlayerManager : MonoBehaviour
         {
             if (leftSelected == true)
             {
-                p2Renderer.color = p1Renderer.color;
+                p2Renderer.sprite = p1Renderer.sprite;
                 player2.GetComponent<Collider2D>().enabled = false;
             }
             else if (leftSelected == false)
             {
-                p2Renderer.color = yellow;
+                p2Renderer.sprite = yellow;
+
                 player2.GetComponent<Collider2D>().enabled = true;
             }
             if (rightSelected == true)
             {
-                p1Renderer.color = p2Renderer.color;
+                p1Renderer.sprite = p2Renderer.sprite;
                 player1.GetComponent<Collider2D>().enabled = false;
             }
             else if (rightSelected == false)
             {
-                p1Renderer.color = blue;
+                p1Renderer.sprite = blue;
+
                 player1.GetComponent<Collider2D>().enabled = true;
             }
         }
@@ -129,14 +145,16 @@ public class HyungJooPlayerManager : MonoBehaviour
         BothSelected();
         CheckRay();
         //ObstacleCheck();
+        Sound();
         ColliderCheck();
+
     }
     private void CheckRay()
     {
-        RaycastHit2D on1hit = Physics2D.Raycast(player1.transform.position, Vector2.up, 1f);
-        RaycastHit2D on1hitBack = Physics2D.Raycast(player1.transform.position, Vector2.down, 1f);
-        RaycastHit2D on2hit = Physics2D.Raycast(player2.transform.position, Vector2.up, 1f);
-        RaycastHit2D on2hitBack = Physics2D.Raycast(player2.transform.position, Vector2.down, 1f);
+        RaycastHit2D on1hit = Physics2D.Raycast(player1.transform.position, Vector2.up, 2f);
+        RaycastHit2D on1hitBack = Physics2D.Raycast(player1.transform.position, Vector2.down, 2f);
+        RaycastHit2D on2hit = Physics2D.Raycast(player2.transform.position, Vector2.up, 2f);
+        RaycastHit2D on2hitBack = Physics2D.Raycast(player2.transform.position, Vector2.down, 2f);
         if (on1hit && on2hit)
         {
             bothSpawn = true;
@@ -150,6 +168,26 @@ public class HyungJooPlayerManager : MonoBehaviour
             bothSpawn=false;
         }
     }
+    public void Sound()
+    {
+
+        if (bothSelected == true) //���ջ���
+        {
+            if (soundBool == false)
+            {
+                soundBool = true;
+                Instantiate(FXSound_2);
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.L)) //���ջ���
+            {
+                Instantiate(FXSound_1);
+            }
+        }
+    }
+}
     //public void ObstacleCheck()
     //{
     //    if (obstacleCheck1 == true && obstacleCheck2 == true)
@@ -161,4 +199,4 @@ public class HyungJooPlayerManager : MonoBehaviour
     //        bothSpawn = false;
     //    }
     //}
-}
+
