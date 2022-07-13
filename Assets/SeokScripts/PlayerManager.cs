@@ -13,20 +13,22 @@ public class PlayerManager : MonoBehaviour
     private Color blue = new Color(0, 1, 1);
     private Color green = new Color(0, 1, 0);
 
-    public float Hp { get => hp; set {hp = value; if (hp <= 0) { popUp.GameoverPopUP(); popUp.Invoke("Asd", 0.8f); } }}
+    public float Hp { get => hp; set {hp = value; if (hp <= 0) {  } }}
     public float maxHp = 20;
     private float hp;
 
     private GameoverPopUp popUp = null;
 
     private bool bothSpawn = false;
+    public bool button1 = false;
+    public bool button2 = false;
 
     private void Awake()
     {
         // if(player1 = null) player1 = GameObject.Find("Player1");
         // if(player2 = null) player2 = GameObject.Find("Player2");   
         hp = 1;
-        popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
+        // popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
     }
     private void Start()
     {
@@ -44,14 +46,61 @@ public class PlayerManager : MonoBehaviour
         CheckRay();
     }
 
+    // private void Merge1()
+    // {
+    //     if(Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.S))
+    //     {
+    //         p1Renderer.color = p2Renderer.color;
+    //         player1.GetComponent<Collider2D>().enabled = false;
+    //     }
+    //     if(!Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.S))
+    //     {
+    //         p1Renderer.color = yellow;
+    //         player1.GetComponent<Collider2D>().enabled = true;
+    //     }
+    // }
+    // private void Merge2()
+    // {
+    //     if(Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.L))
+    //     {
+    //         p2Renderer.color = p1Renderer.color;
+    //         player1.GetComponent<Collider2D>().enabled = false;
+    //     }
+    //     if(!Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.L))
+    //     {
+    //         p2Renderer.color = blue;
+    //         player2.GetComponent<Collider2D>().enabled = true;
+    //     }
+    // }
+    // private void BothMerge()
+    // {
+    //     if(Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.L))
+    //     {
+    //         if(bothSpawn)
+    //         {
+    //             Debug.Log("sad");
+    //             p1Renderer.color = green;
+    //             p2Renderer.color = green;
+    //             player1.GetComponent<Collider2D>().enabled = false;
+    //             player2.GetComponent<Collider2D>().enabled = false;
+    //         }
+    //     }
+    //     if(!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.L))
+    //     {
+    //         p1Renderer.color = yellow;
+    //         p2Renderer.color = blue;
+    //         player1.GetComponent<Collider2D>().enabled = true;
+    //         player2.GetComponent<Collider2D>().enabled = true;
+    //     }
+    // }
     private void Merge1()
     {
-        if(Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.S))
+        if(button1 && !button2)
         {
             p1Renderer.color = p2Renderer.color;
             player1.GetComponent<Collider2D>().enabled = false;
         }
-        if(!Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.S))
+        if(!button1 || button2)
         {
             p1Renderer.color = yellow;
             player1.GetComponent<Collider2D>().enabled = true;
@@ -106,6 +155,6 @@ public class PlayerManager : MonoBehaviour
         if(!on2hit)
         {
             bothSpawn = false;
-        }
+        }   
     }
 }
