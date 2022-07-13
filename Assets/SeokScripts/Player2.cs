@@ -6,6 +6,7 @@ public class Player2 : MonoBehaviour
 {
     private HyungJooPlayerManager pm = null;
     public Animator animator;
+    public GameObject hit;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -14,6 +15,7 @@ public class Player2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Instantiate(hit);
         Debug.Log($"{pm.Hp}");
         pm.Hp = pm.Hp - 1/pm.maxHp;
         other.gameObject.SetActive(false);

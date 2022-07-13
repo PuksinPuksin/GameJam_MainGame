@@ -36,6 +36,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     public bool button2 = false;
     
     private GameoverPopUp popUp = null;
+    public GameObject diesound;
 
     private void Start()
     {
@@ -148,6 +149,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         CheckRay();
         Sound();
         ColliderCheck();
+        die();
 
     }
     private void CheckRay()
@@ -186,6 +188,15 @@ public class HyungJooPlayerManager : MonoBehaviour
             {
                 CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("SuperMerge");
             }
+        }
+    }
+
+    public void die()
+    {
+        if(Hp <= 0)
+        {
+            Instantiate(diesound);
+            
         }
     }
 }
