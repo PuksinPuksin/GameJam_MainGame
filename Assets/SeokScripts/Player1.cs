@@ -5,9 +5,10 @@ using UnityEngine;
 public class Player1 : MonoBehaviour
 {
     public HyungJooPlayerManager hyungJooPlayerManager;
+    private PlayerManager pm = null;
+    public GameObject hit;
     private BoxCollider2D collider = null;
     private Animator animator = null;
-    public PlayerManager pm = null;
     private Vector2 offs;
     private Vector2 siz;
     
@@ -29,11 +30,11 @@ public class Player1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        Instantiate(hit);
         Debug.Log($"{hyungJooPlayerManager.Hp}");
         hyungJooPlayerManager.Hp = hyungJooPlayerManager.Hp - 1/hyungJooPlayerManager.maxHp;
         other.gameObject.SetActive(false);
-    }
+        
 
     public void SetBlue()
     {

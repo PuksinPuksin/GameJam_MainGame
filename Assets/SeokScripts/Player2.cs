@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player2 : MonoBehaviour
 {
     private HyungJooPlayerManager pm = null;
+    public GameObject hit;
     private Animator animator = null;
     private BoxCollider2D collider = null;
     private Vector2 offs;
@@ -12,8 +13,8 @@ public class Player2 : MonoBehaviour
 
     private void Awake()
     {
-        pm = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();
         animator = GetComponent<Animator>();
+        pm = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();    
         collider = GetComponent<BoxCollider2D>();
         offs = collider.offset;
         siz = collider.size;
@@ -21,6 +22,7 @@ public class Player2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Instantiate(hit);
         Debug.Log($"{pm.Hp}");
         pm.Hp = pm.Hp - 1/pm.maxHp;
         other.gameObject.SetActive(false);
@@ -51,33 +53,5 @@ public class Player2 : MonoBehaviour
         transform.localScale = new Vector3(1, 1, 1);
         collider.size = new Vector2(0.1f, 0.1f);
         collider.offset = new Vector2(0, -0.01f);
-    }
-    private void Update()
-    {
-        ChangeAnimation();
-    }
-    public void ChangeAnimation()
-    {
-        if (HyungJooPlayerManager.bothSelected == true)
-        {
-            animator.SetBool("greenOn", true);
-            animator.SetBool("yellowOn", false);
-            animator.SetBool("blueOn", false);
-        }
-        else
-        {
-            if (HyungJooPlayerManager.leftSelected == true)
-            {
-                animator.SetBool("yellowOn", true);
-                animator.SetBool("greenOn", false);
-                animator.SetBool("blueOn", false);
-            }
-            if (HyungJooPlayerManager.rightSelected == true)
-            {
-                animator.SetBool("blueOn", true);
-                animator.SetBool("yellowOn", false);
-                animator.SetBool("greenOn", false);
-            }
-        }
     }
 }

@@ -2380,9 +2380,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 120058976}
-        m_TargetAssemblyTypeName: SceneLoad, Assembly-CSharp
-        m_MethodName: OnStart
+      - m_Target: {fileID: 1178972703}
+        m_TargetAssemblyTypeName: OptionSceneManager, Assembly-CSharp
+        m_MethodName: OnRestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3230,9 +3230,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1178972703}
-        m_TargetAssemblyTypeName: OptionSceneManager, Assembly-CSharp
-        m_MethodName: OnOption
+      - m_Target: {fileID: 1178972705}
+        m_TargetAssemblyTypeName: InGameOptionSceneManager, Assembly-CSharp
+        m_MethodName: OnOption2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5360,6 +5360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  hit: {fileID: 627318505398064158, guid: 94e752b3e165d234b93b47d1719316bc, type: 3}
 --- !u!212 &1116614207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5457,6 +5458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178972704}
   - component: {fileID: 1178972703}
+  - component: {fileID: 1178972705}
   m_Layer: 0
   m_Name: OptionSceneManager
   m_TagString: Untagged
@@ -5495,6 +5497,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178972705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178972702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3190cd38816bd5140b896ff12b1d723b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionButton: {fileID: 312701440}
+  optionPanelOn: 0
+  optionPanel: {fileID: 1689631866}
 --- !u!1 &1195383026
 GameObject:
   m_ObjectHideFlags: 0
@@ -5887,6 +5904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hyungJooPlayerManager: {fileID: 1854983999}
+  hit: {fileID: 627318505398064158, guid: 94e752b3e165d234b93b47d1719316bc, type: 3}
 --- !u!212 &1446613485
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6476,9 +6494,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1178972703}
-        m_TargetAssemblyTypeName: OptionSceneManager, Assembly-CSharp
-        m_MethodName: OnOption
+      - m_Target: {fileID: 1178972705}
+        m_TargetAssemblyTypeName: InGameOptionSceneManager, Assembly-CSharp
+        m_MethodName: OnOption2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7367,6 +7385,7 @@ MonoBehaviour:
   maxHp: 20
   button1: 0
   button2: 0
+  diesound: {fileID: 1928454918248715805, guid: bf5bdeefe99cd8c4d84eb14493162081, type: 3}
 --- !u!50 &1854984000
 Rigidbody2D:
   serializedVersion: 4
