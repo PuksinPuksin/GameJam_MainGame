@@ -6,7 +6,7 @@ using DG.Tweening;
 public class GameoverPopUp : MonoBehaviour
 {
 
-    
+
     public void GameoverPopUP()
     {
         transform.DOMoveY(360, 0.75f);
