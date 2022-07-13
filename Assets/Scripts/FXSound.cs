@@ -5,11 +5,9 @@ using UnityEngine;
 public class FXSound : MonoBehaviour
 {
     public GameObject FX;
-    void Update()
+    
+    public void FXsound()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(FX);
-        }       
+        Instantiate(FX);
     }
 }

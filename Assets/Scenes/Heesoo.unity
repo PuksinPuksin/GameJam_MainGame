@@ -207,9 +207,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1630450745}
-        m_TargetAssemblyTypeName: OptionSceneManager, Assembly-CSharp
-        m_MethodName: OnQuit
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -355,6 +355,8 @@ RectTransform:
   - {fileID: 394480107}
   - {fileID: 1578497075}
   - {fileID: 756033169}
+  - {fileID: 809245255}
+  - {fileID: 1627718791}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -851,6 +853,7 @@ GameObject:
   - component: {fileID: 394480111}
   - component: {fileID: 394480110}
   - component: {fileID: 394480109}
+  - component: {fileID: 394480112}
   m_Layer: 5
   m_Name: Explain
   m_TagString: Untagged
@@ -871,7 +874,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 224805405}
-  - {fileID: 1627718791}
   m_Father: {fileID: 109884146}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -924,10 +926,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1627718790}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1918579855}
+        m_TargetAssemblyTypeName: PopUpManager, Assembly-CSharp
+        m_MethodName: ExplainPopUpAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 394480112}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -974,6 +988,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394480106}
   m_CullTransparentMesh: 1
+--- !u!114 &394480112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394480106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e30b434de7eb946a9f22457b2a6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FX: {fileID: 85231320561407609, guid: ecc4306cc97b42d4a8a4f5f1a41d7999, type: 3}
 --- !u!1 &484851208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1130,7 @@ GameObject:
   - component: {fileID: 489471668}
   - component: {fileID: 489471667}
   - component: {fileID: 489471666}
+  - component: {fileID: 489471669}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -1175,9 +1203,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1630450745}
-        m_TargetAssemblyTypeName: OptionSceneManager, Assembly-CSharp
-        m_MethodName: OnOption
+      - m_Target: {fileID: 1918579855}
+        m_TargetAssemblyTypeName: PopUpManager, Assembly-CSharp
+        m_MethodName: OptionPopUpAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 489471669}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1225,6 +1265,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489471664}
   m_CullTransparentMesh: 1
+--- !u!114 &489471669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489471664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e30b434de7eb946a9f22457b2a6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FX: {fileID: 267357395072794760, guid: 177f47f048892864680027ccf145f55a, type: 3}
 --- !u!1 &533807547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,7 +1715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2289,13 +2342,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1136338916}
-  m_Father: {fileID: 1578497075}
-  m_RootOrder: 1
+  m_Father: {fileID: 109884146}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -465, y: 818}
-  m_SizeDelta: {x: 830.7218, y: 1032.262}
+  m_AnchoredPosition: {x: -125.00003, y: 237.81073}
+  m_SizeDelta: {x: 130.7218, y: -148.11621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &809245256
 MonoBehaviour:
@@ -2347,6 +2400,7 @@ GameObject:
   - component: {fileID: 944316431}
   - component: {fileID: 944316430}
   - component: {fileID: 944316429}
+  - component: {fileID: 944316432}
   m_Layer: 5
   m_Name: SoundButton
   m_TagString: Untagged
@@ -2431,6 +2485,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 944316432}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &944316430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2469,6 +2535,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944316427}
   m_CullTransparentMesh: 1
+--- !u!114 &944316432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944316427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e30b434de7eb946a9f22457b2a6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FX: {fileID: 85231320561407609, guid: ecc4306cc97b42d4a8a4f5f1a41d7999, type: 3}
 --- !u!1 &1050252945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,10 +2804,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 809245254}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1918579855}
+        m_TargetAssemblyTypeName: PopUpManager, Assembly-CSharp
+        m_MethodName: OptionPopUpAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2923,6 +3002,7 @@ GameObject:
   - component: {fileID: 1213560750}
   - component: {fileID: 1213560749}
   - component: {fileID: 1213560748}
+  - component: {fileID: 1213560752}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -3019,6 +3099,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1213560752}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1213560750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3057,6 +3149,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213560746}
   m_CullTransparentMesh: 1
+--- !u!114 &1213560752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213560746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e30b434de7eb946a9f22457b2a6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FX: {fileID: 85231320561407609, guid: ecc4306cc97b42d4a8a4f5f1a41d7999, type: 3}
 --- !u!1 &1291187355
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3287,7 @@ GameObject:
   - component: {fileID: 1382429530}
   - component: {fileID: 1382429529}
   - component: {fileID: 1382429528}
+  - component: {fileID: 1382429531}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -3254,10 +3360,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1627718790}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1918579855}
+        m_TargetAssemblyTypeName: PopUpManager, Assembly-CSharp
+        m_MethodName: ExplainPopUpAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1382429531}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3304,6 +3422,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382429526}
   m_CullTransparentMesh: 1
+--- !u!114 &1382429531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382429526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e30b434de7eb946a9f22457b2a6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FX: {fileID: 267357395072794760, guid: 177f47f048892864680027ccf145f55a, type: 3}
 --- !u!1 &1384313851
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,6 +3523,7 @@ GameObject:
   - component: {fileID: 1539499686}
   - component: {fileID: 1539499685}
   - component: {fileID: 1539499684}
+  - component: {fileID: 1539499687}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -3476,6 +3608,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1539499687}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1539499685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3514,6 +3658,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539499682}
   m_CullTransparentMesh: 1
+--- !u!114 &1539499687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539499682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e30b434de7eb946a9f22457b2a6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FX: {fileID: 267357395072794760, guid: 177f47f048892864680027ccf145f55a, type: 3}
 --- !u!1 &1542056536
 GameObject:
   m_ObjectHideFlags: 0
@@ -3661,6 +3818,7 @@ GameObject:
   - component: {fileID: 1578497078}
   - component: {fileID: 1578497077}
   - component: {fileID: 1578497076}
+  - component: {fileID: 1578497079}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -3675,19 +3833,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578497074}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 533807548}
-  - {fileID: 809245255}
   m_Father: {fileID: 109884146}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -10, y: 10}
+  m_AnchoredPosition: {x: -10.000053, y: 9.999939}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1578497076
@@ -3734,9 +3891,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1630450745}
-        m_TargetAssemblyTypeName: OptionSceneManager, Assembly-CSharp
-        m_MethodName: OnOption
+      - m_Target: {fileID: 1918579855}
+        m_TargetAssemblyTypeName: PopUpManager, Assembly-CSharp
+        m_MethodName: OptionPopUpAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1578497079}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3784,6 +3953,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578497074}
   m_CullTransparentMesh: 1
+--- !u!114 &1578497079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578497074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e30b434de7eb946a9f22457b2a6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FX: {fileID: 8873280634417655523, guid: 563c0b2a098456f44bee4a4531a5030f, type: 3}
 --- !u!1 &1594406924
 GameObject:
   m_ObjectHideFlags: 0
@@ -3911,20 +4093,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627718790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1382429527}
   - {fileID: 598840059}
-  m_Father: {fileID: 394480107}
-  m_RootOrder: 1
+  m_Father: {fileID: 109884146}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.2329102, y: 177.54395}
-  m_SizeDelta: {x: 61.6473, y: 877.8573}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000030517578, y: -0.000030517578}
+  m_SizeDelta: {x: 701.64734, y: 997.8573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627718792
 MonoBehaviour:
@@ -4248,7 +4430,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799270165}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1799270167
 Camera:
   m_ObjectHideFlags: 0
@@ -4307,6 +4489,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1918579851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918579854}
+  - component: {fileID: 1918579856}
+  - component: {fileID: 1918579855}
+  m_Layer: 0
+  m_Name: PopUpManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1918579854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918579851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 218, y: 349.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1918579855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918579851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b872d3e436a09e64b802ea3ecfab041e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ppAnimation: {fileID: 1918579856}
+  optionPanel: {fileID: 756033168}
+  explainPanel: {fileID: 1627718790}
+  settingButton: {fileID: 1578497074}
+--- !u!114 &1918579856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918579851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1f24c6c7ef97f4185130b6bab986c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1971735270
 GameObject:
   m_ObjectHideFlags: 0
@@ -4672,6 +4915,7 @@ GameObject:
   - component: {fileID: 2061328674}
   - component: {fileID: 2061328673}
   - component: {fileID: 2061328672}
+  - component: {fileID: 2061328676}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -4768,6 +5012,18 @@ MonoBehaviour:
           m_StringArgument: InGameSeok
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2061328676}
+        m_TargetAssemblyTypeName: FXSound, Assembly-CSharp
+        m_MethodName: FXsound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2061328674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4806,3 +5062,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061328670}
   m_CullTransparentMesh: 1
+--- !u!114 &2061328676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061328670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e30b434de7eb946a9f22457b2a6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FX: {fileID: 85231320561407609, guid: ecc4306cc97b42d4a8a4f5f1a41d7999, type: 3}

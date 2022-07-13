@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneLoad : SceneManagerParent
 {
 
     public void OnStart()
     {
-        SingleTon.Instance.GameStart();
+        SceneManager.LoadScene("IngameSeokPhone");
     }
 
     public void OnExplain()
@@ -26,4 +27,8 @@ public class SceneLoad : SceneManagerParent
         Debug.Log("111");
     }
 
+    public void OnMain()
+    {
+        SceneManager.LoadScene("Heesoo");
+    }
 }
