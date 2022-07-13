@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SeokHyun.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Heesoo.unity
     guid: e7fd565583e9f354996a6c6ee4891c5d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/InGameSeok.unity
     guid: 4e21e58763ad9f546a367d07b83c4eff
+  - enabled: 1
+    path: Assets/Scenes/InGameSeokPhone.unity
+    guid: 8345c2209beeb6f4cb6db23609ee9099
   - enabled: 1
     path: Assets/Scenes/OptionScene.unity
     guid: 6c7d4375e6506894eabdd800160e4e6b
