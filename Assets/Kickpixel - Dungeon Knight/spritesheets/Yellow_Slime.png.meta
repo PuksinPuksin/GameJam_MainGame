@@ -143,19 +143,19 @@ TextureImporter:
       name: Yellow_Slime_0
       rect:
         serializedVersion: 2
-        x: 157
+        x: 160
         y: 160
-        width: 194
-        height: 177
+        width: 192
+        height: 176
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68f48ee244f1f664a9a45f6fe493d388
-      internalID: 264136182
+      spriteID: aef5727d8293d5b49b595d42234b3b63
+      internalID: 1506158861
       vertices: []
       indices: 
       edges: []
@@ -165,18 +165,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 671
-        y: 160
+        y: 159
         width: 193
-        height: 160
+        height: 161
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 462968abeaf63604fae132b49c082fb6
-      internalID: 1016971888
+      spriteID: 6cf7cdbbc321ea44aad26b90f70a916c
+      internalID: -1727070753
       vertices: []
       indices: 
       edges: []
@@ -186,18 +186,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1183
-        y: 160
+        y: 159
         width: 194
         height: 161
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc7f4aca053a14140aab275657f113c4
-      internalID: 1058723449
+      spriteID: 99af11864b52d7849a7ddddfba6e6c5f
+      internalID: 1612474799
       vertices: []
       indices: 
       edges: []
@@ -206,19 +206,19 @@ TextureImporter:
       name: Yellow_Slime_3
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 160
-        width: 256
-        height: 160
+        x: 1663
+        y: 159
+        width: 259
+        height: 162
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c75e589cf42f25149acefcd48a9d8e11
-      internalID: 197564702
+      spriteID: 71ea57b6dd72e5749a3fa9592a39f08e
+      internalID: 354310729
       vertices: []
       indices: 
       edges: []
@@ -227,19 +227,19 @@ TextureImporter:
       name: Yellow_Slime_4
       rect:
         serializedVersion: 2
-        x: 2160
-        y: 160
-        width: 288
-        height: 128
+        x: 2159
+        y: 159
+        width: 291
+        height: 130
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d47439091137d7c48a83399c82ea7786
-      internalID: 2100432344
+      spriteID: 524eaa89e35b8d7409e1863ccda894a1
+      internalID: 543118779
       vertices: []
       indices: 
       edges: []
@@ -255,13 +255,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Yellow_Slime_5: -625777145
-      Yellow_Slime_2: 1058723449
-      Yellow_Slime_6: -252224090
-      Yellow_Slime_1: 1016971888
-      Yellow_Slime_4: 2100432344
-      Yellow_Slime_0: 264136182
-      Yellow_Slime_3: 197564702
+      Yellow_Slime_2: 1612474799
+      Yellow_Slime_1: -1727070753
+      Yellow_Slime_4: 543118779
+      Yellow_Slime_0: 1506158861
+      Yellow_Slime_3: 354310729
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

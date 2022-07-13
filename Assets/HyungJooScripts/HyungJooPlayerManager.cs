@@ -7,6 +7,8 @@ public class HyungJooPlayerManager : MonoBehaviour
     private SpriteRenderer p1Renderer = null;
     [SerializeField] private bool bothSpawn = false;
     private SpriteRenderer p2Renderer = null;
+    private Player1 p1 = null;
+    private Player2 p2 = null;
 
     private Color yellow = new Color(1, 1, 0);
     private Color blue = new Color(0, 1, 1);
@@ -26,12 +28,15 @@ public class HyungJooPlayerManager : MonoBehaviour
     public bool button1 = false;
     public bool button2 = false;
 
+    private void Awake()
+    {
+        p1 = player1.GetComponent<Player1>();
+        p2 = player2.GetComponent<Player2>();
+    }
     private void Start()
     {
         p1Renderer = player1.GetComponent<SpriteRenderer>();
         p2Renderer = player2.GetComponent<SpriteRenderer>();
-        p1Renderer.color = yellow;
-        p2Renderer.color = blue;
         leftSelected = false;
         rightSelected = false;
         bothSelected = false;
@@ -63,7 +68,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     public void BothSelected()
     {
         if (button2 == true && button1 == true)
-        {
+        {   
             bothSelected = true;
             Debug.Log("B");
         }
@@ -77,17 +82,15 @@ public class HyungJooPlayerManager : MonoBehaviour
 
         if (bothSelected == true)
         {
+            p1.SetGreen();
+            p2.SetGreen();
             if (bothSpawn)
             {
-                p1Renderer.color = green;
-                p2Renderer.color = green;
                 player1.GetComponent<Collider2D>().enabled = false;
                 player2.GetComponent<Collider2D>().enabled = false;
             }
             else
             {
-                p1Renderer.color = green;
-                p2Renderer.color = green;
                 player1.GetComponent<Collider2D>().enabled = true;
                 player2.GetComponent<Collider2D>().enabled = true;
             }
@@ -97,28 +100,32 @@ public class HyungJooPlayerManager : MonoBehaviour
         {
             if (leftSelected == true)
             {
-                p2Renderer.color = p1Renderer.color;
                 player2.GetComponent<Collider2D>().enabled = false;
+                p2.SetBlue();
             }
             else if (leftSelected == false)
             {
-                p2Renderer.color = yellow;
                 player2.GetComponent<Collider2D>().enabled = true;
+                p2.SetYellow();
             }
             if (rightSelected == true)
             {
-                p1Renderer.color = p2Renderer.color;
                 player1.GetComponent<Collider2D>().enabled = false;
+                p1.SetYellow();
             }
             else if (rightSelected == false)
             {
-                p1Renderer.color = blue;
                 player1.GetComponent<Collider2D>().enabled = true;
+                p1.SetBlue();
             }
         }
     }
     private void Update()
     {
+        // For Debug
+        this.button1 = Input.GetKey(KeyCode.L);
+        this.button2 = Input.GetKey(KeyCode.S);
+        
         LeftSelected();
         RightSelected();
         BothSelected();
