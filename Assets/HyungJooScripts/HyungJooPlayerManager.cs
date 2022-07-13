@@ -42,7 +42,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         PoolManager.CreatePool<CHECKSOUND>("Merge", transform.gameObject, 2);
         PoolManager.CreatePool<CHECKSOUND>("SuperMerge", transform.gameObject, 2);
         popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
-
+        hp = 1;
 
         Time.timeScale = 1;
         p1Renderer = player1.GetComponent<SpriteRenderer>();
