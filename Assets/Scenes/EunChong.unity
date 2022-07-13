@@ -3640,6 +3640,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1446613481}
   player2: {fileID: 1116614203}
+  blueMergeEffect: {fileID: 0}
+  greenMergeEffect: {fileID: 0}
+  orangeMergeEffect: {fileID: 0}
   bothSpawn: 0
   maxHp: 20
 --- !u!50 &1854984000

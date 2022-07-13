@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
         // if(player1 = null) player1 = GameObject.Find("Player1");
         // if(player2 = null) player2 = GameObject.Find("Player2");   
         hp = 1;
-        popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
+        //popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
     }
     private void Start()
     {
