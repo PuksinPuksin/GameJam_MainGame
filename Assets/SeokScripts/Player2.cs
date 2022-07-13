@@ -5,8 +5,6 @@ using UnityEngine;
 public class Player2 : MonoBehaviour
 {
     private HyungJooPlayerManager pm = null;
-    public Animator animator;
-    private PlayerManager pm = null;
     private Animator animator = null;
     private BoxCollider2D collider = null;
     private Vector2 offs;
@@ -32,7 +30,7 @@ public class Player2 : MonoBehaviour
         animator.SetBool("SetBlue", true);
         animator.SetBool("SetGreen", false);
         animator.SetBool("SetYellow", false);
-        transform.localScale = new Vector3(12, 12, 1);
+        transform.localScale = new Vector3(1, 1, 1);
         collider.size = siz;
         collider.offset = offs;
     }
@@ -41,7 +39,7 @@ public class Player2 : MonoBehaviour
         animator.SetBool("SetBlue", false);
         animator.SetBool("SetGreen", false);
         animator.SetBool("SetYellow", true);
-        transform.localScale = new Vector3(0.75f, 0.75f, 1);
+        transform.localScale = new Vector3(1, 1, 1);
         collider.size = siz;
         collider.offset = offs;
     }
@@ -50,7 +48,7 @@ public class Player2 : MonoBehaviour
         animator.SetBool("SetBlue", false);
         animator.SetBool("SetGreen", true);
         animator.SetBool("SetYellow", false);
-        transform.localScale = new Vector3(12, 12, 1);
+        transform.localScale = new Vector3(1, 1, 1);
         collider.size = new Vector2(0.1f, 0.1f);
         collider.offset = new Vector2(0, -0.01f);
     }
