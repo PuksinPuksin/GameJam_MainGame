@@ -39,13 +39,18 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     private void Start()
     {
+        PoolManager.CreatePool<CHECKSOUND>("Merge", transform.gameObject, 2);
+        PoolManager.CreatePool<CHECKSOUND>("SuperMerge", transform.gameObject, 2);
+        popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
 
-        //popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
+
         Time.timeScale = 1;
         p1Renderer = player1.GetComponent<SpriteRenderer>();
         p2Renderer = player2.GetComponent<SpriteRenderer>();
+
         p1Renderer.sprite = yellow;
         p2Renderer.sprite = blue;
+
         leftSelected = false;
         rightSelected = false;
         bothSelected = false;
@@ -141,7 +146,6 @@ public class HyungJooPlayerManager : MonoBehaviour
         RightSelected();
         BothSelected();
         CheckRay();
-        //ObstacleCheck();
         Sound();
         ColliderCheck();
 
@@ -173,27 +177,17 @@ public class HyungJooPlayerManager : MonoBehaviour
             if (soundBool == false)
             {
                 soundBool = true;
-                Instantiate(FXSound_2);
+                CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("Merge");
             }
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.L)) //결합사운드
             {
-                Instantiate(FXSound_1);
+                CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("SuperMerge");
             }
         }
     }
 }
-    //public void ObstacleCheck()
-    //{
-    //    if (obstacleCheck1 == true && obstacleCheck2 == true)
-    //    {
-    //        bothSpawn = true;
-    //    }
-    //    else
-    //    {
-    //        bothSpawn = false;
-    //    }
-    //}
+
 

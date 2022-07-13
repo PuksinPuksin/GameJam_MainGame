@@ -9,14 +9,14 @@ public class Player1 : MonoBehaviour
 
     private void Awake()
     {
-        pm = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();    
+        hyungJooPlayerManager = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();    
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         
         Debug.Log($"{pm.Hp}");
-        pm.Hp = pm.Hp - 1/pm.maxHp;
+        hyungJooPlayerManager.Hp = hyungJooPlayerManager.Hp - 1/hyungJooPlayerManager.maxHp;
         other.gameObject.SetActive(false);
         
 

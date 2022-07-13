@@ -8,14 +8,14 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private int obstacleRange;
     private int obstacleRangeMax = 0;
     private int obstacleRangeMin = 3;
-    [SerializeField] private PlayerManager playerManager;
+    public HyungJooPlayerManager hyungJooPlayerManager;
     public float newWaitForSeconds;
 
     private void Start()
     {
         newWaitForSeconds = 3f;
         ObstacleMove.speed = 5f;
-        playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+        hyungJooPlayerManager = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();
         obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
         PoolManager.CreatePool<ObstacleMove>("Obstacle", transform.gameObject, 3);
         PoolManager.CreatePool<ObstacleMove>("LeftObstacle", transform.gameObject, 3);

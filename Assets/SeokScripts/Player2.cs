@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
-    private PlayerManager pm = null;
+    private HyungJooPlayerManager pm = null;
     public Animator animator;
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        pm = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();    
+        pm = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();    
     }
 
     private void OnTriggerEnter2D(Collider2D other)
