@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Player2 : MonoBehaviour
 {
+    private HyungJooPlayerManager pm = null;
+    public Animator animator;
     private PlayerManager pm = null;
     private Animator animator = null;
     private BoxCollider2D collider = null;
-
     private Vector2 offs;
     private Vector2 siz;
 
     private void Awake()
     {
-        pm = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+        pm = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
     }
@@ -52,5 +53,33 @@ public class Player2 : MonoBehaviour
         transform.localScale = new Vector3(12, 12, 1);
         collider.size = new Vector2(0.1f, 0.1f);
         collider.offset = new Vector2(0, -0.01f);
+    }
+    private void Update()
+    {
+        ChangeAnimation();
+    }
+    public void ChangeAnimation()
+    {
+        if (HyungJooPlayerManager.bothSelected == true)
+        {
+            animator.SetBool("greenOn", true);
+            animator.SetBool("yellowOn", false);
+            animator.SetBool("blueOn", false);
+        }
+        else
+        {
+            if (HyungJooPlayerManager.leftSelected == true)
+            {
+                animator.SetBool("yellowOn", true);
+                animator.SetBool("greenOn", false);
+                animator.SetBool("blueOn", false);
+            }
+            if (HyungJooPlayerManager.rightSelected == true)
+            {
+                animator.SetBool("blueOn", true);
+                animator.SetBool("yellowOn", false);
+                animator.SetBool("greenOn", false);
+            }
+        }
     }
 }

@@ -45,9 +45,11 @@ public class HyungJooPlayerManager : MonoBehaviour
         p2 = player2.GetComponent<Player2>();
     }
     private void Start()
-
     {
+        PoolManager.CreatePool<CHECKSOUND>("Merge", transform.gameObject, 2);
+        PoolManager.CreatePool<CHECKSOUND>("SuperMerge", transform.gameObject, 2);
         popUp = GameObject.Find("Canvas/GameOverPopUP").GetComponent<GameoverPopUp>();
+        hp = 1;
 
         Time.timeScale = 1;
         p1Renderer = player1.GetComponent<SpriteRenderer>();
@@ -147,7 +149,6 @@ public class HyungJooPlayerManager : MonoBehaviour
         RightSelected();
         BothSelected();
         CheckRay();
-        //ObstacleCheck();
         Sound();
         ColliderCheck();
 
@@ -179,27 +180,17 @@ public class HyungJooPlayerManager : MonoBehaviour
             if (soundBool == false)
             {
                 soundBool = true;
-                Instantiate(FXSound_2);
+                CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("Merge");
             }
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.L)) //���ջ���
             {
-                Instantiate(FXSound_1);
+                CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("SuperMerge");
             }
         }
     }
 }
-    //public void ObstacleCheck()
-    //{
-    //    if (obstacleCheck1 == true && obstacleCheck2 == true)
-    //    {
-    //        bothSpawn = true;
-    //    }
-    //    else
-    //    {
-    //        bothSpawn = false;
-    //    }
-    //}
+
 

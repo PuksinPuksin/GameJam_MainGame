@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player1 : MonoBehaviour
 {
+    public HyungJooPlayerManager hyungJooPlayerManager;
+    private PlayerManager pm = null;
     private Animator animator = null;
-    public PlayerManager pm = null;
-
+    
     private void Awake()
     {
+        hyungJooPlayerManager = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();    
         pm = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         animator = GetComponent<Animator>();
     }
@@ -22,8 +24,8 @@ public class Player1 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         
-        Debug.Log($"{pm.Hp}");
-        pm.Hp = pm.Hp - 1/pm.maxHp;
+        Debug.Log($"{hyungJooPlayerManager.Hp}");
+        hyungJooPlayerManager.Hp = hyungJooPlayerManager.Hp - 1/hyungJooPlayerManager.maxHp;
         other.gameObject.SetActive(false);
     }
 
@@ -48,4 +50,5 @@ public class Player1 : MonoBehaviour
         animator.SetBool("SetYellow", false);
         transform.localScale = new Vector3(12, 12, 1);
     }
+ 
 }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class OptionSceneManager : SceneManagerParent
 {
     public bool optionPanelOn;
+
     public bool soundPanelOn;
     [SerializeField] private GameObject soundPanel;
     [SerializeField] private GameObject optionPanel;
@@ -19,11 +20,12 @@ public class OptionSceneManager : SceneManagerParent
         optionPanel.SetActive(false);
 
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            OnOption();
+            //OnOption();
         }
     }
     public void OnOption()
@@ -41,6 +43,7 @@ public class OptionSceneManager : SceneManagerParent
             optionPanelOn = true;
         }
     }
+
     public void OnSound()
     {
         if (soundPanelOn == true)
@@ -71,7 +74,7 @@ public class OptionSceneManager : SceneManagerParent
     }
     public void OnRestart()
     {
-        SceneManager.LoadScene("InGame");
+        SceneManager.LoadScene("EunChong");
     }
 
 }
