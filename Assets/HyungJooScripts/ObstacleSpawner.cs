@@ -13,7 +13,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Start()
     {
-        newWaitForSeconds = 5f;
+        newWaitForSeconds = 3f;
         ObstacleMove.speed = 5f;
         playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
@@ -25,9 +25,16 @@ public class ObstacleSpawner : MonoBehaviour
     }
     private void Update()
     {
-        newWaitForSeconds -= Time.deltaTime / 20;
-        ObstacleMove.speed += Time.deltaTime / 15 ;
-        Debug.Log(newWaitForSeconds);
+        if (newWaitForSeconds > 0.3f)
+        {
+            newWaitForSeconds -= Time.deltaTime / 30;
+
+        }
+        if (ObstacleMove.speed < 11f)
+        {
+            ObstacleMove.speed += Time.deltaTime / 10;
+
+        }
     }
     private IEnumerator ObstacleSpawn()
     {
