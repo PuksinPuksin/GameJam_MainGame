@@ -7,6 +7,8 @@ public class HyungJooPlayerManager : MonoBehaviour
     [SerializeField] private GameObject blueMergeEffect;
     [SerializeField] private GameObject greenMergeEffect;
     [SerializeField] private GameObject orangeMergeEffect;
+    [SerializeField] GameObject FXSound_1; //사운드프리펩
+    [SerializeField] GameObject FXSound_2; //사운드프리펩
     private SpriteRenderer p1Renderer = null;
     [SerializeField] private bool bothSpawn = false;
     private SpriteRenderer p2Renderer = null;
@@ -21,6 +23,7 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     public static bool leftSelected;
     public static bool rightSelected;
+    public static bool soundBool;
     public static bool bothSelected;
 
     public static bool obstacleCheck1;
@@ -70,6 +73,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         else
         {
             bothSelected = false;
+            soundBool = false;
         }
     }
     public void ColliderCheck()
@@ -130,7 +134,9 @@ public class HyungJooPlayerManager : MonoBehaviour
         BothSelected();
         CheckRay();
         //ObstacleCheck();
+        Sound();
         ColliderCheck();
+
     }
     private void CheckRay()
     {
@@ -151,6 +157,26 @@ public class HyungJooPlayerManager : MonoBehaviour
             bothSpawn=false;
         }
     }
+    public void Sound()
+    {
+
+        if (bothSelected == true) //결합사운드
+        {
+            if (soundBool == false)
+            {
+                soundBool = true;
+                Instantiate(FXSound_2);
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.L)) //결합사운드
+            {
+                Instantiate(FXSound_1);
+            }
+        }
+    }
+}
     //public void ObstacleCheck()
     //{
     //    if (obstacleCheck1 == true && obstacleCheck2 == true)
@@ -162,4 +188,4 @@ public class HyungJooPlayerManager : MonoBehaviour
     //        bothSpawn = false;
     //    }
     //}
-}
+
