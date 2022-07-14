@@ -8,7 +8,7 @@ public class SceneLoad : SceneManagerParent
 
     public void OnStart()
     {
-        SceneManager.LoadScene("IngameSeokPhone");
+        SceneManager.LoadScene(gameObject.scene.name);
     }
 
     public void OnExplain()
@@ -24,7 +24,6 @@ public class SceneLoad : SceneManagerParent
     public void OnQuit()
     {
         Application.Quit();
-        Debug.Log("111");
     }
 
     public void OnMain()
