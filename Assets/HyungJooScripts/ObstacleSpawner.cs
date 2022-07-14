@@ -14,7 +14,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         newWaitForSeconds = 3f;
-        ObstacleMove.speed = 5f;
+        ObstacleMove.speed = 3f;
         hyungJooPlayerManager = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();
         obstacleRange = Random.Range(obstacleRangeMin, obstacleRangeMax);
         PoolManager.CreatePool<ObstacleMove>("Obstacle", transform.gameObject, 3);
@@ -25,16 +25,12 @@ public class ObstacleSpawner : MonoBehaviour
     }
     private void Update()
     {
-        if (newWaitForSeconds > 0.3f)
+        if (newWaitForSeconds > 0.7f)
         {
             newWaitForSeconds -= Time.deltaTime / 30;
 
         }
-        if (ObstacleMove.speed < 11f)
-        {
-            ObstacleMove.speed += Time.deltaTime / 10;
-
-        }
+        ObstacleMove.speed += Time.deltaTime / 18;
     }
     private IEnumerator ObstacleSpawn()
     {
