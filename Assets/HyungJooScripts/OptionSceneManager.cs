@@ -11,6 +11,7 @@ public class OptionSceneManager : SceneManagerParent
     public bool soundPanelOn;
     [SerializeField] private GameObject soundPanel;
     [SerializeField] private GameObject optionPanel;
+    [SerializeField] private GameObject filter = null;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class OptionSceneManager : SceneManagerParent
         soundPanel.SetActive(false);
         optionPanelOn = false;
         optionPanel.SetActive(false);
+        filter.SetActive(false);
 
     }
 
@@ -25,19 +27,21 @@ public class OptionSceneManager : SceneManagerParent
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //OnOption();
+            OnOption();
         }
     }
     public void OnOption()
     {
         if (optionPanelOn == true)
         {
+            filter.SetActive(false);
             Time.timeScale = 1.0f;
             optionPanel.SetActive(false);
             optionPanelOn = false;
         }
         else
         {
+            filter.SetActive(true);
             Time.timeScale = 0f;
             optionPanel.SetActive(true);
             optionPanelOn = true;
@@ -64,7 +68,7 @@ public class OptionSceneManager : SceneManagerParent
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit(); // ¾îÇÃ¸®ÄÉÀÌ¼Ç Á¾·á
+            Application.Quit(); // ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 #endif
 
     }

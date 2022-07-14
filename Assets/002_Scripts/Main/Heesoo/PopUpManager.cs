@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PopUpManager : MonoBehaviour
 {
     public PPAnimation ppAnimation;
+    [SerializeField] private GameObject filter = null;
     [SerializeField] private GameObject optionPanel;
     [SerializeField] private GameObject explainPanel;
     [SerializeField] private GameObject settingButton;
@@ -20,9 +21,11 @@ public class PopUpManager : MonoBehaviour
             ppAnimation.Animation(optionPanel);
             settingButton.gameObject.SetActive(false);
             settingOn = true;
+            filter.SetActive(true);
         }
         else
         {
+            filter.SetActive(false);
             optionPanel.SetActive(false);
             settingButton.gameObject.SetActive(true);
             settingOn = false;
@@ -37,10 +40,12 @@ public class PopUpManager : MonoBehaviour
         if (explainOn == false)
         {
             ppAnimation.Animation2(explainPanel);
+            filter.SetActive(true);
             explainOn = true;
         }
         else
         {
+            filter.SetActive(false);
             explainPanel.SetActive(false);
             explainOn = false;
         }
