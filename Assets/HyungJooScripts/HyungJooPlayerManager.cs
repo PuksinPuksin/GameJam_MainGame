@@ -5,17 +5,21 @@ public class HyungJooPlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject player1 = null;
     [SerializeField] private GameObject player2 = null;
-    public Sprite blue = null;
-    public Sprite yellow = null;
-    public Sprite green = null;
+
     [SerializeField] private GameObject blueMergeEffect;
     [SerializeField] private GameObject greenMergeEffect;
     [SerializeField] private GameObject orangeMergeEffect;
-    [SerializeField] GameObject FXSound_1; //»ç¿îµåÇÁ¸®Æé
-    [SerializeField] GameObject FXSound_2; //»ç¿îµåÇÁ¸®Æé
+
+    [SerializeField] private GameObject FXSound_1; 
+    [SerializeField] private GameObject FXSound_2;
+    
     private SpriteRenderer p1Renderer = null;
-    [SerializeField] private bool bothSpawn = false;
     private SpriteRenderer p2Renderer = null;
+
+    [SerializeField] private bool bothSpawn = false;
+
+    private Player1 p1 = null;
+    private Player2 p2 = null;
 
     //private Color yellow = new Color(1, 1, 0);
     //private Color blue = new Color(0, 1, 1);
@@ -23,7 +27,7 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     public float Hp { get => hp; set { hp = value; if (hp <= 0) { popUp.GameoverPopUP(); popUp.Invoke("Asd", 0.8f); }; } }
     public float maxHp = 20;
-    private float hp;
+    [SerializeField] private float hp = 1;
 
     public static bool leftSelected;
     public static bool rightSelected;
@@ -238,7 +242,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     public void Sound()
     {
 
-        if (bothSelected == true) //°áÇÕ»ç¿îµå
+        if (bothSelected == true) //ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½
         {
             if (soundBool == false)
             {
@@ -248,7 +252,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.L)) //°áÇÕ»ç¿îµå
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.L)) //ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½
             {
                 CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("SuperMerge");
             }

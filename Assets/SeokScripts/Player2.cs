@@ -33,8 +33,8 @@ public class Player2 : MonoBehaviour
         animator.SetBool("SetGreen", false);
         animator.SetBool("SetYellow", false);
         transform.localScale = new Vector3(1, 1, 1);
-        collider.size = siz;
-        collider.offset = offs;
+        //collider.size = siz;
+        //collider.offset = offs;
     }
     public void SetYellow()
     {
@@ -42,8 +42,8 @@ public class Player2 : MonoBehaviour
         animator.SetBool("SetGreen", false);
         animator.SetBool("SetYellow", true);
         transform.localScale = new Vector3(1, 1, 1);
-        collider.size = siz;
-        collider.offset = offs;
+        //collider.size = siz;
+        //collider.offset = offs;
     }
     public void SetGreen()
     {
@@ -51,7 +51,7 @@ public class Player2 : MonoBehaviour
         animator.SetBool("SetGreen", true);
         animator.SetBool("SetYellow", false);
         transform.localScale = new Vector3(1, 1, 1);
-        collider.size = new Vector2(0.1f, 0.1f);
-        collider.offset = new Vector2(0, -0.01f);
+        //collider.size = new Vector2(0.1f, 0.1f);
+        //collider.offset = new Vector2(0, -0.01f);
     }
 }
