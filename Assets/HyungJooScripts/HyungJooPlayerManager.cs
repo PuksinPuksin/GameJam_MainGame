@@ -11,6 +11,7 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     [SerializeField] private GameObject FXSound_1; 
     [SerializeField] private GameObject FXSound_2;
+    [SerializeField] private GameObject diesound;
     
     private SpriteRenderer p1Renderer = null;
     private SpriteRenderer p2Renderer = null;
@@ -63,7 +64,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void LeftSelected()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (button2)
         {
             leftSelected = true;
             Debug.Log("S");
@@ -75,7 +76,7 @@ public class HyungJooPlayerManager : MonoBehaviour
     }
     public void RightSelected()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (button1)
         {
             rightSelected = true;
             Debug.Log("L");
@@ -144,8 +145,8 @@ public class HyungJooPlayerManager : MonoBehaviour
     private void Update()
     {
         // For Debug
-        this.button1 = Input.GetKey(KeyCode.L);
-        this.button2 = Input.GetKey(KeyCode.S);
+        // this.button1 = Input.GetKey(KeyCode.L);
+        // this.button2 = Input.GetKey(KeyCode.S);
         
         LeftSelected();
         RightSelected();
@@ -153,7 +154,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         CheckRay();
         Sound();
         ColliderCheck();
-
+        damagesound();
     }
     private void CheckRay()
     {
@@ -187,10 +188,18 @@ public class HyungJooPlayerManager : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.L))
+            if (button2 || button1)
             {
                 CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("SuperMerge");
             }
+        }
+    }
+
+    public void damagesound()
+    {
+        if(Hp <= 0)
+        {
+            Instantiate(diesound);
         }
     }
 }

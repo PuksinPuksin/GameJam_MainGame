@@ -9,6 +9,7 @@ public class Player2 : MonoBehaviour
     private BoxCollider2D collider = null;
     private Vector2 offs;
     private Vector2 siz;
+    [SerializeField] private GameObject hitsound;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class Player2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Instantiate(hitsound);
         Debug.Log($"{pm.Hp}");
         pm.Hp = pm.Hp - 1/pm.maxHp;
         other.gameObject.SetActive(false);
