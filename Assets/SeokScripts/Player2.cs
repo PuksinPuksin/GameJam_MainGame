@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player2 : MonoBehaviour
 {
     private HyungJooPlayerManager pm = null;
+    public GameObject hit;
     private Animator animator = null;
     private BoxCollider2D collider = null;
     private Vector2 offs;
@@ -12,18 +13,19 @@ public class Player2 : MonoBehaviour
 
     private void Awake()
     {
-        pm = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();
         animator = GetComponent<Animator>();
+        pm = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();    
         collider = GetComponent<BoxCollider2D>();
+        offs = collider.offset;
+        siz = collider.size;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Instantiate(hit);
         Debug.Log($"{pm.Hp}");
         pm.Hp = pm.Hp - 1/pm.maxHp;
         other.gameObject.SetActive(false);
-        offs = collider.offset;
-        siz = collider.size;
     }
     public void SetBlue()
     {
