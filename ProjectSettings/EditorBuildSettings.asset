@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/InGameSeokPhone.unity
     guid: 8345c2209beeb6f4cb6db23609ee9099
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OptionScene.unity
     guid: 6c7d4375e6506894eabdd800160e4e6b
   - enabled: 1
