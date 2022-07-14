@@ -25,7 +25,11 @@ public class HyungJooPlayerManager : MonoBehaviour
     //private Color blue = new Color(0, 1, 1);
     //private Color green = new Color(0, 1, 0);
 
-    public float Hp { get => hp; set { hp = value; if (hp <= 0) { popUp.GameoverPopUP(); popUp.Invoke("Asd", 0.8f); }; } }
+    public float Hp { get => hp; set { hp = value; if (hp <= 0) { 
+        popUp.GameoverPopUP(); 
+        popUp.Invoke("Asd", 0.8f);
+        Instantiate(diesound); 
+    }}}
     public float maxHp = 20;
     [SerializeField] private float hp = 1;
 
@@ -154,7 +158,6 @@ public class HyungJooPlayerManager : MonoBehaviour
         CheckRay();
         Sound();
         ColliderCheck();
-        damagesound();
     }
     private void CheckRay()
     {
@@ -195,13 +198,6 @@ public class HyungJooPlayerManager : MonoBehaviour
         }*/
     }
 
-    public void damagesound()
-    {
-        if(Hp <= 0)
-        {
-            Instantiate(diesound);
-        }
-    }
 }
 
 
