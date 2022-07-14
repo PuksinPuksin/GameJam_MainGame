@@ -29,6 +29,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         popUp.GameoverPopUP(); 
         popUp.Invoke("Asd", 0.8f);
         Instantiate(diesound); 
+        GameObject.Find("BackgroundMove").GetComponent<AudioSource>().Stop();
     }}}
     public float maxHp = 20;
     [SerializeField] private float hp = 1;
