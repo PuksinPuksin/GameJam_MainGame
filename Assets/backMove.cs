@@ -8,6 +8,10 @@ public class backMove : MonoBehaviour
     [SerializeField] private GameObject back2 = null;
     [SerializeField] private float speed = 5f;
 
+    [SerializeField] private GameObject button1 = null;
+    [SerializeField] private GameObject button2 = null;
+    [SerializeField] private GameObject optionPanel = null;
+
     private void Update()
     {
         if(back1.transform.position.y <= -10)
@@ -19,6 +23,17 @@ public class backMove : MonoBehaviour
             back2.transform.position = new Vector3(0, 9, 0);
         }
         Move();
+
+        if(optionPanel.activeSelf == true)
+        {
+            button1.SetActive(false);
+            button2.SetActive(false);
+        }
+        if(optionPanel.activeSelf == false)
+        {
+            button1.SetActive(true);
+            button2.SetActive(true);
+        }
     }
     private void Move()
     {
