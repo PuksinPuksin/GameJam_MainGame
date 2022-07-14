@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player1 : MonoBehaviour
 {
+    private SpriteRenderer sprend = null;
     public HyungJooPlayerManager hyungJooPlayerManager;
     private PlayerManager pm = null;
     private Animator animator = null;
@@ -14,6 +16,7 @@ public class Player1 : MonoBehaviour
         hyungJooPlayerManager = GameObject.Find("PlayerManager").GetComponent<HyungJooPlayerManager>();    
         pm = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
         animator = GetComponent<Animator>();
+        sprend = GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -24,7 +27,9 @@ public class Player1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Handheld.Vibrate();
         Instantiate(hitsound);
+        StartCoroutine(Blink(3));
         Debug.Log($"{hyungJooPlayerManager.Hp}");
         hyungJooPlayerManager.Hp = hyungJooPlayerManager.Hp - 1/hyungJooPlayerManager.maxHp;
         other.gameObject.SetActive(false);
@@ -51,5 +56,16 @@ public class Player1 : MonoBehaviour
         animator.SetBool("SetYellow", false);
         transform.localScale = new Vector3(1, 1, 1);
     }
- 
+    private IEnumerator Blink(int roop)
+    {
+        for (int i = 0; i < roop; i++)
+        {
+            sprend.enabled = false;
+            yield return new WaitForSeconds(0.1f);
+            sprend.enabled = true;
+            yield return new WaitForSeconds(0.1f);
+        }
+        sprend.enabled = true;
+        StopCoroutine("Blink");
+    }
 }
