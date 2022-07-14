@@ -70,11 +70,11 @@ public class OptionSceneManager : SceneManagerParent
     }
     public void OnMainMenu()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Heesoo");
     }
     public void OnRestart()
     {
-        SceneManager.LoadScene("EunChong");
+        SceneManager.LoadScene(gameObject.scene.name);
     }
 
 }

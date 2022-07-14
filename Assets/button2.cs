@@ -19,6 +19,7 @@ public class button2 : MonoBehaviour
     public void SetTrue()
     {
         pm.button2 = true;
+        CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("SuperMerge");
     }
     public void SetFalse()
     {

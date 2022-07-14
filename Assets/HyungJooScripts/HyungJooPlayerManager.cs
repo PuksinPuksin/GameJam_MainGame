@@ -185,14 +185,14 @@ public class HyungJooPlayerManager : MonoBehaviour
                 soundBool = true;
                 CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("Merge");
             }
-        }
+        }/*
         else
         {
             if (button2 || button1)
             {
                 CHECKSOUND obj = PoolManager.GetItem<CHECKSOUND>("SuperMerge");
             }
-        }
+        }*/
     }
 
     public void damagesound()
