@@ -5,19 +5,17 @@ public class HyungJooPlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject player1 = null;
     [SerializeField] private GameObject player2 = null;
-
+    public Sprite blue = null;
+    public Sprite yellow = null;
+    public Sprite green = null;
     [SerializeField] private GameObject blueMergeEffect;
     [SerializeField] private GameObject greenMergeEffect;
     [SerializeField] private GameObject orangeMergeEffect;
-
-    [SerializeField] private GameObject FXSound_1; 
-    [SerializeField] private GameObject FXSound_2;
-    
+    [SerializeField] GameObject FXSound_1; //����������
+    [SerializeField] GameObject FXSound_2; //����������
     private SpriteRenderer p1Renderer = null;
-    private SpriteRenderer p2Renderer = null;
-
     [SerializeField] private bool bothSpawn = false;
-
+    private SpriteRenderer p2Renderer = null;
     private Player1 p1 = null;
     private Player2 p2 = null;
 
@@ -27,7 +25,7 @@ public class HyungJooPlayerManager : MonoBehaviour
 
     public float Hp { get => hp; set { hp = value; if (hp <= 0) { popUp.GameoverPopUP(); popUp.Invoke("Asd", 0.8f); }; } }
     public float maxHp = 20;
-    [SerializeField] private float hp = 1;
+    private float hp;
 
     public static bool leftSelected;
     public static bool rightSelected;
@@ -236,7 +234,7 @@ public class HyungJooPlayerManager : MonoBehaviour
         }
         else
         {
-            bothSpawn = false;
+            bothSpawn=false;
         }
     }
     public void Sound()
